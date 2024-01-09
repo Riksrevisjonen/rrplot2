@@ -1,0 +1,345 @@
+---
+title: "Graph testing"
+format:
+  html:
+    fig-height: 5
+    out-width: 100%
+    code-fold: true
+    code-summary: "Show source code"
+    toc: true
+    toc-title: Innhold
+    embed-resources: true
+editor: visual
+date: now
+engine: knitr
+number-sections: true
+output:
+  html_document
+theme: 
+  - united
+  - customtheme.scss
+---
+
+```{r}
+#| include: false
+library(devtools)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+load_all(path = "C:/Users/jsn/Documents/JSN/SUV DS/Repo/rrplot")
+library(rrplot)
+```
+
+
+# Bar chart
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+mtcars %>% 
+  ggplot(aes(x = factor(cyl),
+             fill = factor(am))) +
+  theme_RR() +
+  geom_bar_RR() +
+  labs(title = "Number of Cars per Number of Cylinders", 
+       x = "Number of Cylinders", 
+       y = "Count") +
+  scale_fill_RR()
+
+```
+
+# Bar chart (flipped)
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+mtcars %>% 
+  ggplot(aes(x = factor(cyl),
+             fill = factor(am))) +
+  theme_RR() +
+  geom_bar_flipped_RR() +
+  labs(title = "Number of Cars per Number of Cylinders", 
+       x = "Number of Cylinders", 
+       y = "Count") +
+  scale_fill_RR()
+
+
+```
+
+
+# Scatter plot (discrete palette)
+
+::: panel-tabset
+
+## Example 1
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+iris %>% 
+  ggplot(aes(x = Sepal.Length, 
+             y = Sepal.Width, 
+             color = Species)) +
+  theme_RR() +
+  geom_point_RR() +
+  labs(title = "Scatterplot of Sepal Dimensions", 
+       x = "Sepal Length", 
+       y = "Sepal Width") +
+  scale_color_RR()
+
+```
+
+## Example 2
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+mpg %>% 
+  ggplot(aes(cty, 
+             hwy, 
+             color = factor(cyl))) +
+  theme_RR() +
+  geom_jitter_RR() +
+  scale_color_RR()
+
+```
+
+
+:::
+
+# Scatter plot (continuous palette)
+
+::: panel-tabset
+
+## Red
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+mtcars %>% 
+  ggplot(aes(x = hp, 
+             y = mpg,
+             color = cyl)) +
+  theme_RR() + 
+  geom_point_RR() +
+  labs(x = "Horse power", 
+       y = "Miles per gallon",
+       fill = "Cylinders") +
+  scale_color_continuous_RR_red()
+
+```
+
+## Blue
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+mtcars %>% 
+  ggplot(aes(x = hp, 
+             y = mpg,
+             color = cyl)) +
+  theme_RR() + 
+  geom_point_RR() +
+  labs(x = "Horse power", 
+       y = "Miles per gallon",
+       fill = "Cylinders") +
+  scale_color_continuous_RR_blue()
+
+```
+
+
+:::
+
+# Density plot
+
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+# Generate example data
+set.seed(123)
+data <- data.frame(
+  Group = rep(c("Group1", "Group2"), each = 200),
+  Value = c(rnorm(200, mean = 0, sd = 1), rnorm(200, mean = 2, sd = 1))
+)
+
+# Create density plot
+data %>% 
+  ggplot(aes(x = Value, fill = Group)) +
+  theme_RR() +
+  geom_density_RR(alpha = 0.5) +
+  labs(x = "Value", y = "Density",
+       fill = "Group") +
+  scale_fill_RR()
+
+```
+
+
+
+# Line chart (simple)
+
+
+```{r}
+#| warning: false
+#| out-width: 100%
+library(babynames)
+
+# Load dataset from github
+data <- babynames %>% 
+  filter(name %in% c("Mary", "Ashley", "Amanda",
+                     "Jessica", "Patricia", "Linda", 
+                     "Deborah", "Dorothy", "Betty")) %>%
+  filter(sex=="F")
+
+# Plot
+data %>%
+  ggplot(aes(x = year, 
+             y = n, 
+             group = name, 
+             color = name)) +
+  theme_RR() +  
+  geom_line_RR() +
+  scale_color_RR()
+
+
+```
+
+# Line chart (faceted)
+
+
+```{r}
+#| warning: false
+#| out-width: 100%
+#| fig-height: 8
+
+tmp <- data %>%
+  mutate(name2=name)
+
+tmp %>%
+  ggplot(aes(x = year, 
+             y = n)) +
+  theme_RR() +
+  geom_line(data = tmp %>% dplyr::select(-name), 
+               aes(group = name2),
+               color = "grey", 
+               size = 0.5, 
+               alpha = 0.5) +
+  geom_line(aes(color = name), 
+               color = RR_dark_blue, 
+               size = 1.2 )+
+  scale_color_RR() +
+  facet_wrap(~name) +
+  theme(axis.line = element_blank()) +
+  labs(y = "Count",
+       x = "Year")
+
+```
+
+# Heat map
+
+::: panel-tabset
+
+## Blue
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+# Dummy data
+x <- LETTERS[1:20]
+y <- paste0("var", seq(1,20))
+data <- expand.grid(X=x, Y=y)
+data$Z <- runif(400, 0, 5)
+ 
+# Heatmap 
+data %>% 
+  ggplot(aes(X, 
+             Y, 
+             fill= Z)) + 
+  geom_tile() + 
+  theme_RR() +
+  scale_fill_continuous_RR_blue()
+
+```
+
+## Red
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+data %>% 
+  ggplot(aes(X, 
+             Y, 
+             fill= Z)) + 
+  geom_tile() + 
+  theme_RR() +
+  scale_fill_continuous_RR_red()
+
+```
+
+:::
+
+# Lollipop chart
+
+```{r}
+#| warning: false
+#| out-width: 100%
+#| fig-height: 8
+
+# Create data
+value1 <- abs(rnorm(26))*2
+data <- data.frame(
+  x=LETTERS[1:26], 
+  value1=value1, 
+  value2=value1+1+rnorm(26, sd=1) 
+)
+ 
+# Reorder data using average? Learn more about reordering in chart #267
+data <- data %>% 
+  rowwise() %>% 
+  mutate( mymean = mean(c(value1,value2) )) %>% 
+  arrange(mymean) %>% 
+  mutate(x=factor(x, x))
+ 
+# Plot
+ggplot(data) +
+  geom_segment( aes(x=x, xend=x, y=value1, yend=value2), color="grey") +
+  theme_RR() +
+  geom_point( aes(x=x, y=value1), 
+              color = RR_dark_blue, size=3 ) +
+  geom_point( aes(x=x, y=value2), 
+              color = RR_scarlet_red, size=3 ) +
+  coord_flip()+
+  theme(legend.position = "none",
+        panel.grid.major.y = element_blank()) +
+  xlab("") +
+  ylab("Value of Y")
+
+
+```
+
+# EMPTY CATEGORY
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+
+```
+
+# EMPTY CATEGORY
+
+```{r}
+#| warning: false
+#| out-width: 100%
+
+
+```
