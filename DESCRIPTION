@@ -1,12 +1,16 @@
 Package: rrplot
-Title: What the Package Does (One Line, Title Case)
+Title: Custom 'ggplot2' theme for the Norwegian Office of the Auditor General
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Joachim", "Sandnes", , "jsn@riksrevisjonen.no", role = c("aut", "cre"))
+Author: Joachim Sandnes [aut, cre]
+Maintainer: Joachim Sandnes <jsn@riksrevisjonen.no>
+Imports:
+    ggplot2,
+    ggthemes,
+    scales
+Description: Custom 'ggplot2' theme for the Norwegian Office of the Auditor General, inspired by the 'ggthemes' package.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

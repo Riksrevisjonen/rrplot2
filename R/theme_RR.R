@@ -1,7 +1,10 @@
-require(ggthemes)
-library(scales)
+#' import ggplot2
+#' import scales
+#' import ggthemes
+#' @name imports
+NULL
 
-#### COLOR PALETTE ####
+#### Color palette ####
 
 RR_dark_blue <- "#183271"
 RR_scarlet_red <- "#E20046"
@@ -14,8 +17,19 @@ main_colors <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_
 
 RR_light_blue = "#E9f8FF"
 
+#' RR color palette
+#' Defines the official color palette of the Norwegian Office of the Auditor General.
+#'
+#' @param fill Determines if the palette is used in a fill or color scale function.
+#'
+#' @export
+#'
+#' @examples
+#' library("scales")
+#' show_col(RR_pal()(9))
+
 RR_pal <- function(fill=TRUE) {
-  #colors <- deframe(ggthemes::ggthemes_data[["RR"]][["fg"]])
+
   if (fill) {
     max_n <- 9
 
@@ -70,40 +84,81 @@ RR_pal <- function(fill=TRUE) {
   f
 }
 
+#### Fill and color scale functions ####
 
+#' Color scale function
+#'
+#' @inheritParams ggplot2::scale_colour_hue
+#' @inheritParams RR_pal
+#' @family color RR
+#' @rdname scale_RR
+#' @export
+#'
 scale_color_RR <- function(...) {
-  discrete_scale("color", "RR", RR_pal(), ...)
+  ggplot2::discrete_scale("color", "RR", RR_pal(), ...)
 }
 
+#' Fill scale function
+#'
+#' @rdname scale_RR
+#' @export
+#'
 scale_fill_RR <- function(...) {
-  discrete_scale("fill", "RR", RR_pal(), ...)
+  ggplot2::discrete_scale("fill", "RR", RR_pal(), ...)
 }
 
-# Continuous palettes
+#### Continuous palettes ####
+#' Continuous fill scale (red)
+#'
+#' @rdname scale_RR
+#' @export
+#'
 scale_fill_continuous_RR_red <- function(...) {
-  scale_fill_gradient(low = "#FB749D", high = "#B8002A", ...)
+  ggplot2::scale_fill_gradient(low = "#FB749D", high = "#B8002A", ...)
 }
 
+#' #' Continuous fill scale (blue)
+#'
+#' @rdname scale_RR
+#' @export
+#'
 scale_fill_continuous_RR_blue <- function(...) {
-  scale_fill_gradient(low = "#4CA4E6", high = "#01123B", ...)
+  ggplot2::scale_fill_gradient(low = "#4CA4E6", high = "#01123B", ...)
 }
 
+#' Continuous color scale (red)
+#'
+#' @param ...
+#'
+#' @export
+#'
 scale_color_continuous_RR_red <- function(...) {
-  scale_color_gradient(low = "#FB749D", high = "#B8002A", ...)
+  ggplot2::scale_color_gradient(low = "#FB749D", high = "#B8002A", ...)
 }
 
+#' Continuous color scale (blue)
+#'
+#' @param ...
+#'
+#' @export
+#'
 scale_color_continuous_RR_blue <- function(...) {
   scale_color_gradient(low = "#4CA4E6", high = "#01123B", ...)
 }
 
+#### Basic theme function ####
 
-#### THEME
-
+#' Basic theme function to implement the official graph style of the Norwegian Office of the Auditor General.
+#'
+#' @inheritParams ggplot2::theme_grey
+#'
+#' @export
+#'
 theme_RR <- function(base_size = 12, base_family = "sans") {
 
   ret <-
     theme_foundation(base_size = base_size, base_family = base_family) +
-    theme(line = element_line(color = "#183271"),
+    ggplot2::theme(line = element_line(color = "#183271"),
           rect = element_rect(fill = main_colors, color = NA,
                               linetype = 1),
           text = element_text(color = "#183271"),
@@ -172,11 +227,16 @@ theme_RR <- function(base_size = 12, base_family = "sans") {
                                          color = RR_light_blue),
 
           # Facet wrap aesthetics
-          strip.background = element_rect(fill = RR_light_blue,
-                                          color = NA, linetype = 0),
-          strip.text = element_text(size = rel(1.25)),
-          strip.text.x = element_text(),
-          strip.text.y = element_text(angle = -90),
+          strip.background.x = element_rect(color = "transparent",
+                                            fill = "transparent"),
+          strip.background.y = element_rect(color = "transparent",
+                                            fill = "transparent"),
+          strip.text = element_text(color = RR_dark_blue,
+                                    family = base_family,
+                                    face = "bold",
+                                    size = rel(1),
+                                    margin = unit(c(0.5,0,0.35,0), "lines")),
+
           plot.title = element_text(size = rel(1.5),
                                     hjust = 0, face = "bold",
                                     margin = margin(b = 12,
@@ -188,32 +248,87 @@ theme_RR <- function(base_size = 12, base_family = "sans") {
   ret
 }
 
+#### Specific theme functions ####
+
+#' Custom wrapper for geom_bar
+#'
+#' @inheritParams ggplot2::geom_bar
+#'
+#' @export
+#'
 geom_bar_RR <- function(..., width = 0.6){
-  list(geom_bar(..., width = width),
-       scale_y_continuous(expand = expansion(mult = c(0,0.1))))
+  list(ggplot2::geom_bar(..., width = width),
+       ggplot2::scale_y_continuous(expand = expansion(mult = c(0,0.1))))
 }
 
+#' Custom wrapper for flipped version of geom_bar
+#'
+#' @export
+#'
 geom_bar_flipped_RR <- function(){
-  list(geom_bar_RR(),
-       theme(panel.grid.major.x = element_line(color = alpha(RR_dark_blue, 0.5),
+  list(ggplot2::geom_bar_RR(),
+       ggplot2::theme(panel.grid.major.x = element_line(color = scales::alpha(RR_dark_blue, 0.5),
                                                linewidth = rel(1.75),
                                                linetype = "dotted", size = 0.6),
              panel.grid.major.y = element_blank(),
              legend.position = "bottom"),
-       coord_flip())
+       ggplot2::coord_flip())
 }
 
-
-geom_scatter_RR <- function(..., size = 3){
-  list(geom_point(size = size),
-       theme(panel.grid.major.x = element_line(color = alpha(RR_dark_blue, 0.5),
+#' Custom wrapper for geom_point
+#'
+#' @inheritParams ggplot2::geom_point
+#'
+#' @export
+#'
+geom_point_RR <- function(..., size = 2.5){
+  list(ggplot2::geom_point(size = size),
+       ggplot2::theme(panel.grid.major.x = element_line(color = scales::alpha(RR_dark_blue, 0.5),
                                                linewidth = rel(1.75),
                                                linetype = "dotted", size = 0.6),
-             panel.grid.major.y = element_line(color = alpha(RR_dark_blue, 0.5),
+             panel.grid.major.y = element_line(color = scales::alpha(RR_dark_blue, 0.5),
                                                linewidth = rel(1.75),
                                                linetype = "dotted", size = 0.6)),
-       scale_y_continuous(expand = expansion(mult = c(0.1,0.1))))
+       ggplot2::scale_y_continuous(expand = expansion(mult = c(0.1,0.1))))
 }
 
+#' Custom wrapper for geom_jitter
+#'
+#' @inheritParams ggplot2::geom_jitter
+#'
+#' @export
+#'
+geom_jitter_RR <- function(..., size = 2.5){
+  list(ggplot2::geom_jitter(size = size),
+       ggplot2::theme(panel.grid.major.x = element_line(color = scales::alpha(RR_dark_blue, 0.5),
+                                               linewidth = rel(1.75),
+                                               linetype = "dotted", size = 0.6),
+             panel.grid.major.y = element_line(color = scales::alpha(RR_dark_blue, 0.5),
+                                               linewidth = rel(1.75),
+                                               linetype = "dotted", size = 0.6)),
+       ggplot2::scale_y_continuous(expand = expansion(mult = c(0.1,0.1))))
+}
+
+#' Custom wrapper for geom_density
+#'
+#' @inheritParams ggplot2::geom_density
+#'
+#' @export
+#'
+geom_density_RR <- function(..., alpha = 0.5){
+  list(ggplot2::geom_density(alpha = alpha),
+       ggplot2::scale_y_continuous(expand = expansion(mult = c(0,0.1))))
+}
+
+#' Custom wrapper for geom_line
+#'
+#' @inheritParams ggplot2::geom_line
+#'
+#' @export
+#'
+geom_line_RR <- function(..., size = 1.5){
+  list(ggplot2::geom_line(size = size),
+       ggplot2::scale_y_continuous(expand = expansion(mult = c(0,0.1))))
+}
 
 
