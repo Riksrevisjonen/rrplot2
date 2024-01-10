@@ -11,6 +11,8 @@ geom_line_RR(..., size = 1.5)
 often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
+
+\item{size}{Thickness of the line.}
 }
 \description{
 Custom wrapper for geom_line

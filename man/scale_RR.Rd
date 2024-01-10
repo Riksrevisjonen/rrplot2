@@ -5,6 +5,8 @@
 \alias{scale_fill_RR}
 \alias{scale_fill_continuous_RR_red}
 \alias{scale_fill_continuous_RR_blue}
+\alias{scale_color_continuous_RR_red}
+\alias{scale_color_continuous_RR_blue}
 \title{Color scale function}
 \usage{
 scale_color_RR(...)
@@ -14,44 +16,47 @@ scale_fill_RR(...)
 scale_fill_continuous_RR_red(...)
 
 scale_fill_continuous_RR_blue(...)
+
+scale_color_continuous_RR_red(...)
+
+scale_color_continuous_RR_blue(...)
 }
 \arguments{
 \item{...}{
-  Arguments passed on to \code{\link[ggplot2:discrete_scale]{discrete_scale}}
+  Arguments passed on to \code{\link[ggplot2:continuous_scale]{continuous_scale}}
   \describe{
-    \item{\code{palette}}{A palette function that when called with a single integer
-argument (the number of levels in the scale) returns the values that
-they should take (e.g., \code{\link[scales:hue_pal]{scales::hue_pal()}}).}
-    \item{\code{breaks}}{One of:
-\itemize{
-\item \code{NULL} for no breaks
-\item \code{waiver()} for the default breaks (the scale limits)
-\item A character vector of breaks
-\item A function that takes the limits as input and returns breaks
-as output. Also accepts rlang \link[rlang:as_function]{lambda} function
-notation.
-}}
-    \item{\code{limits}}{One of:
-\itemize{
-\item \code{NULL} to use the default scale values
-\item A character vector that defines possible values of the scale and their
-order
-\item A function that accepts the existing (automatic) values and returns
-new ones. Also accepts rlang \link[rlang:as_function]{lambda} function
-notation.
-}}
-    \item{\code{drop}}{Should unused factor levels be omitted from the scale?
-The default, \code{TRUE}, uses the levels that appear in the data;
-\code{FALSE} uses all the levels in the factor.}
-    \item{\code{na.translate}}{Unlike continuous scales, discrete scales can easily show
-missing values, and do so by default. If you want to remove missing values
-from a discrete scale, specify \code{na.translate = FALSE}.}
     \item{\code{scale_name}}{The name of the scale that should be used for error messages
 associated with this scale.}
+    \item{\code{palette}}{A palette function that when called with a numeric vector with
+values between 0 and 1 returns the corresponding output values
+(e.g., \code{\link[scales:area_pal]{scales::area_pal()}}).}
     \item{\code{name}}{The name of the scale. Used as the axis or legend title. If
 \code{waiver()}, the default, the name of the scale is taken from the first
 mapping used for that aesthetic. If \code{NULL}, the legend title will be
 omitted.}
+    \item{\code{breaks}}{One of:
+\itemize{
+\item \code{NULL} for no breaks
+\item \code{waiver()} for the default breaks computed by the
+\link[scales:trans_new]{transformation object}
+\item A numeric vector of positions
+\item A function that takes the limits as input and returns breaks
+as output (e.g., a function returned by \code{\link[scales:breaks_extended]{scales::extended_breaks()}}).
+Also accepts rlang \link[rlang:as_function]{lambda} function notation.
+}}
+    \item{\code{minor_breaks}}{One of:
+\itemize{
+\item \code{NULL} for no minor breaks
+\item \code{waiver()} for the default breaks (one minor break between
+each major break)
+\item A numeric vector of positions
+\item A function that given the limits returns a vector of minor breaks. Also
+accepts rlang \link[rlang:as_function]{lambda} function notation.
+}}
+    \item{\code{n.breaks}}{An integer guiding the number of major breaks. The algorithm
+may choose a slightly different number to ensure nice break labels. Will
+only have an effect if \code{breaks = waiver()}. Use \code{NULL} to use the default
+number of breaks given by the transformation.}
     \item{\code{labels}}{One of:
 \itemize{
 \item \code{NULL} for no labels
@@ -63,8 +68,45 @@ transformation object
 as output. Also accepts rlang \link[rlang:as_function]{lambda} function
 notation.
 }}
-    \item{\code{guide}}{A function used to create a guide or its name. See
-\code{\link[ggplot2:guides]{guides()}} for more information.}
+    \item{\code{limits}}{One of:
+\itemize{
+\item \code{NULL} to use the default scale range
+\item A numeric vector of length two providing limits of the scale.
+Use \code{NA} to refer to the existing minimum or maximum
+\item A function that accepts the existing (automatic) limits and returns
+new limits. Also accepts rlang \link[rlang:as_function]{lambda} function
+notation.
+Note that setting limits on positional scales will \strong{remove} data outside of the limits.
+If the purpose is to zoom, use the limit argument in the coordinate system
+(see \code{\link[ggplot2:coord_cartesian]{coord_cartesian()}}).
+}}
+    \item{\code{rescaler}}{A function used to scale the input values to the
+range [0, 1]. This is always \code{\link[scales:rescale]{scales::rescale()}}, except for
+diverging and n colour gradients (i.e., \code{\link[ggplot2:scale_colour_gradient2]{scale_colour_gradient2()}},
+\code{\link[ggplot2:scale_colour_gradientn]{scale_colour_gradientn()}}). The \code{rescaler} is ignored by position
+scales, which always use \code{\link[scales:rescale]{scales::rescale()}}. Also accepts rlang
+\link[rlang:as_function]{lambda} function notation.}
+    \item{\code{oob}}{One of:
+\itemize{
+\item Function that handles limits outside of the scale limits
+(out of bounds). Also accepts rlang \link[rlang:as_function]{lambda}
+function notation.
+\item The default (\code{\link[scales:oob]{scales::censor()}}) replaces out of
+bounds values with \code{NA}.
+\item \code{\link[scales:oob]{scales::squish()}} for squishing out of bounds values into range.
+\item \code{\link[scales:oob]{scales::squish_infinite()}} for squishing infinite values into range.
+}}
+    \item{\code{trans}}{For continuous scales, the name of a transformation object
+or the object itself. Built-in transformations include "asn", "atanh",
+"boxcox", "date", "exp", "hms", "identity", "log", "log10", "log1p", "log2",
+"logit", "modulus", "probability", "probit", "pseudo_log", "reciprocal",
+"reverse", "sqrt" and "time".
+
+A transformation object bundles together a transform, its inverse,
+and methods for generating breaks and labels. Transformation objects
+are defined in the scales package, and are called \verb{<name>_trans} (e.g.,
+\code{\link[scales:boxcox_trans]{scales::boxcox_trans()}}). You can create your own
+transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
     \item{\code{expand}}{For position scales, a vector of range expansion constants used to add some
 padding around the data to ensure that they are placed some distance
 away from the axes. Use the convenience function \code{\link[ggplot2:expansion]{expansion()}}
@@ -83,6 +125,10 @@ Fill scale function
 
 Continuous fill scale (red)
 
-#' Continuous fill scale (blue)
+Continuous fill scale (blue)
+
+Continuous color scale (red)
+
+Continuous color scale (blue)
 }
 \concept{color RR}

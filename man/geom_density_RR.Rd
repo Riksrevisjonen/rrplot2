@@ -11,6 +11,8 @@ geom_density_RR(..., alpha = 0.5)
 often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
+
+\item{alpha}{Degree of transparency in the density plots.}
 }
 \description{
 Custom wrapper for geom_density

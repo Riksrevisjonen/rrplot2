@@ -88,10 +88,11 @@ RR_pal <- function(fill=TRUE) {
 
 #' Color scale function
 #'
-#' @inheritParams ggplot2::scale_colour_hue
+#' @inheritParams ggplot2::discrete_scale
 #' @inheritParams RR_pal
 #' @family color RR
 #' @rdname scale_RR
+#'
 #' @export
 #'
 scale_color_RR <- function(...) {
@@ -100,7 +101,10 @@ scale_color_RR <- function(...) {
 
 #' Fill scale function
 #'
+#' @inheritParams ggplot2::discrete_scale
+#'
 #' @rdname scale_RR
+#'
 #' @export
 #'
 scale_fill_RR <- function(...) {
@@ -111,15 +115,21 @@ scale_fill_RR <- function(...) {
 #' Continuous fill scale (red)
 #'
 #' @rdname scale_RR
+#'
+#' @inheritParams ggplot2::scale_fill_gradient
+#'
 #' @export
 #'
 scale_fill_continuous_RR_red <- function(...) {
   ggplot2::scale_fill_gradient(low = "#FB749D", high = "#B8002A", ...)
 }
 
-#' #' Continuous fill scale (blue)
+#' Continuous fill scale (blue)
 #'
 #' @rdname scale_RR
+#'
+#' @inheritParams ggplot2::scale_fill_gradient
+#'
 #' @export
 #'
 scale_fill_continuous_RR_blue <- function(...) {
@@ -128,20 +138,26 @@ scale_fill_continuous_RR_blue <- function(...) {
 
 #' Continuous color scale (red)
 #'
-#' @param ...
+#' @rdname scale_RR
+#'
+#' @inheritParams ggplot2::scale_color_gradient
 #'
 #' @export
 #'
+
 scale_color_continuous_RR_red <- function(...) {
   ggplot2::scale_color_gradient(low = "#FB749D", high = "#B8002A", ...)
 }
 
 #' Continuous color scale (blue)
 #'
-#' @param ...
+#' @rdname scale_RR
+#'
+#' @inheritParams ggplot2::scale_color_gradient
 #'
 #' @export
 #'
+
 scale_color_continuous_RR_blue <- function(...) {
   scale_color_gradient(low = "#4CA4E6", high = "#01123B", ...)
 }
@@ -157,94 +173,95 @@ scale_color_continuous_RR_blue <- function(...) {
 theme_RR <- function(base_size = 12, base_family = "sans") {
 
   ret <-
-    theme_foundation(base_size = base_size, base_family = base_family) +
+    ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
     ggplot2::theme(line = element_line(color = "#183271"),
-          rect = element_rect(fill = main_colors, color = NA,
-                              linetype = 1),
-          text = element_text(color = "#183271"),
+                   rect = element_rect(fill = main_colors, color = NA,
+                                       linetype = 1),
+                   text = element_text(color = "#183271"),
 
-          ## Axis lines
-          axis.line = element_line(RR_dark_blue,
-                                   linewidth = rel(0.8)),
+                   # Axis lines
+                   axis.line = element_line(RR_dark_blue,
+                                            linewidth = rel(0.8)),
 
-          # Axis titles
-          axis.title.y = element_text(margin = margin(r = base_size+8,
-                                                      l = base_size),
-                                      angle = 90,
-                                      size = rel(1.15)),
-          axis.title.x = element_text(margin = margin(t = base_size+8,
-                                                      b = base_size),
-                                      size = rel(1.15)),
+                    # Axis titles
+                    axis.title.y = element_text(margin = margin(r = base_size+8,
+                                                                l = base_size),
+                                                angle = 90,
+                                                size = rel(1.15)),
+                    axis.title.x = element_text(margin = margin(t = base_size+8,
+                                                                b = base_size),
+                                                size = rel(1.15)),
 
-          # Axis text
-          axis.text = element_text(size = rel(1)),
-          axis.text.x = element_text(vjust = 0,
-                                     margin = margin(t = base_size-5,
-                                                     unit = "pt"),
-                                     size = rel(1)),
-          axis.text.y = element_text(hjust = 0,
-                                     margin = margin(r = base_size-5,
-                                                     unit = "pt"),
-                                     size = rel(1)),
+                    # Axis text
+                    axis.text = element_text(size = rel(1)),
+                    axis.text.x = element_text(vjust = 0,
+                                               margin = margin(t = base_size-5,
+                                                               unit = "pt"),
+                                               size = rel(1)),
+                    axis.text.y = element_text(hjust = 0,
+                                               margin = margin(r = base_size-5,
+                                                               unit = "pt"),
+                                               size = rel(1)),
 
-          # Axis ticks
-          axis.ticks = element_blank(),
-          axis.ticks.length = unit(-0.25, "cm"),
+                    # Axis ticks
+                    axis.ticks = element_blank(),
+                    axis.ticks.length = unit(-0.25, "cm"),
 
-          # Legend
-          legend.background = element_rect(fill = RR_light_blue,
-                                           color = RR_light_blue,
-                                           linetype = 0),
-          legend.box.background = element_rect(fill = RR_light_blue,
-                                               color = RR_light_blue,
-                                               linetype = 0),
-          legend.spacing = margin(c(0,0,0,0), "points"),
-          legend.key = element_rect(fill = RR_light_blue,
-                                    color = RR_light_blue,
-                                    linetype = 0),
-          legend.key.size = unit(1.2, "lines"),
-          legend.key.height = NULL,
-          legend.key.width = NULL,
-          legend.text = element_text(size = rel(1.1)),
-          legend.text.align = NULL,
-          legend.title = element_text(size = rel(1.2),  hjust = 0,
-                                      margin = margin(t = 12,
-                                                      unit = "pt")),
-          legend.title.align = NULL,
-          legend.position = "right",
-          legend.direction = NULL,
-          legend.justification = "center",
+                    # Legend
+                    legend.background = element_rect(fill = RR_light_blue,
+                                                     color = RR_light_blue,
+                                                     linetype = 0),
+                    legend.box.background = element_rect(fill = RR_light_blue,
+                                                         color = RR_light_blue,
+                                                         linetype = 0),
+                    legend.spacing = margin(c(0,0,0,0), "points"),
+                    legend.key = element_rect(fill = RR_light_blue,
+                                              color = RR_light_blue,
+                                              linetype = 0),
+                    legend.key.size = unit(1.2, "lines"),
+                    legend.key.height = NULL,
+                    legend.key.width = NULL,
+                    legend.text = element_text(size = rel(1.1)),
+                    legend.text.align = NULL,
+                    legend.title = element_text(size = rel(1.2),  hjust = 0,
+                                                margin = margin(t = 12,
+                                                                unit = "pt")),
+                    legend.title.align = NULL,
+                    legend.position = "right",
+                    legend.direction = NULL,
+                    legend.justification = "center",
 
-          # Panel and plot backgrounds
-          panel.background = element_rect(fill = "white", linetype = 0),
-          panel.border = element_blank(),
-          panel.grid.major = element_line(color = alpha(RR_dark_blue, 0.5),
-                                          linewidth = rel(1.75),
-                                          linetype = "dotted", size = 0.6),
-          panel.grid.minor = element_blank(),
-          panel.spacing = unit(0.25, "lines"),
-          plot.background = element_rect(fill = RR_light_blue,
-                                         color = RR_light_blue),
+                    # Panel and plot backgrounds
+                    panel.background = element_rect(fill = "white", linetype = 0),
+                    panel.border = element_blank(),
+                    panel.grid.major = element_line(color = alpha(RR_dark_blue, 0.5),
+                                                    linewidth = rel(1.75),
+                                                    linetype = "dotted", size = 0.6),
+                    panel.grid.minor = element_blank(),
+                    panel.spacing = unit(0.25, "lines"),
+                    plot.background = element_rect(fill = RR_light_blue,
+                                                   color = RR_light_blue),
 
-          # Facet wrap aesthetics
-          strip.background.x = element_rect(color = "transparent",
-                                            fill = "transparent"),
-          strip.background.y = element_rect(color = "transparent",
-                                            fill = "transparent"),
-          strip.text = element_text(color = RR_dark_blue,
-                                    family = base_family,
-                                    face = "bold",
-                                    size = rel(1),
-                                    margin = unit(c(0.5,0,0.35,0), "lines")),
+                    # Facet wrap aesthetics
+                    strip.background.x = element_rect(color = "transparent",
+                                                      fill = "transparent"),
+                    strip.background.y = element_rect(color = "transparent",
+                                                      fill = "transparent"),
+                    strip.text = element_text(color = RR_dark_blue,
+                                              family = base_family,
+                                              face = "bold",
+                                              size = rel(1),
+                                              margin = unit(c(0.5,0,0.35,0), "lines")),
 
-          plot.title = element_text(size = rel(1.5),
-                                    hjust = 0, face = "bold",
-                                    margin = margin(b = 12,
-                                                    unit = "points")),
+                    # Plot title
+                    plot.title = element_text(size = rel(1.5),
+                                              hjust = 0, face = "bold",
+                                              margin = margin(b = 12,
+                                                              unit = "points")),
 
-          # Spacing
-          plot.margin = unit(c(1, 0.6, 0.4, 0.4), "cm"),
-          complete = TRUE)
+                    # Spacing
+                    plot.margin = unit(c(1, 0.6, 0.4, 0.4), "cm"),
+                    complete = TRUE)
   ret
 }
 
@@ -266,7 +283,7 @@ geom_bar_RR <- function(..., width = 0.6){
 #' @export
 #'
 geom_bar_flipped_RR <- function(){
-  list(ggplot2::geom_bar_RR(),
+  list(geom_bar_RR(),
        ggplot2::theme(panel.grid.major.x = element_line(color = scales::alpha(RR_dark_blue, 0.5),
                                                linewidth = rel(1.75),
                                                linetype = "dotted", size = 0.6),
@@ -278,6 +295,7 @@ geom_bar_flipped_RR <- function(){
 #' Custom wrapper for geom_point
 #'
 #' @inheritParams ggplot2::geom_point
+#' @param size Size of the dots.
 #'
 #' @export
 #'
@@ -295,6 +313,7 @@ geom_point_RR <- function(..., size = 2.5){
 #' Custom wrapper for geom_jitter
 #'
 #' @inheritParams ggplot2::geom_jitter
+#' @param size Size of the dots.
 #'
 #' @export
 #'
@@ -312,6 +331,7 @@ geom_jitter_RR <- function(..., size = 2.5){
 #' Custom wrapper for geom_density
 #'
 #' @inheritParams ggplot2::geom_density
+#' @param alpha Degree of transparency in the density plots.
 #'
 #' @export
 #'
@@ -323,6 +343,7 @@ geom_density_RR <- function(..., alpha = 0.5){
 #' Custom wrapper for geom_line
 #'
 #' @inheritParams ggplot2::geom_line
+#' @param size Thickness of the line.
 #'
 #' @export
 #'
