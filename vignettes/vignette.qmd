@@ -11,13 +11,13 @@ format:
     embed-resources: true
 editor: visual
 date: now
-engine: knitr
+engine: quarto
 number-sections: true
 output:
   html_document
 theme: 
   - united
-  - customtheme.scss
+  - RR-theme-qmd.scss
 ---
 
 ```{r}
@@ -25,11 +25,11 @@ theme:
 library(devtools)
 library(dplyr)
 library(ggplot2)
+library(grid)
 library(ggthemes)
 load_all(path = "C:/Users/jsn/Documents/JSN/SUV DS/Repo/rrplot")
 library(rrplot)
 ```
-
 
 # Bar chart
 
@@ -68,11 +68,9 @@ mtcars %>%
 
 ```
 
-
 # Scatter plot (discrete palette)
 
 ::: panel-tabset
-
 ## Example 1
 
 ```{r}
@@ -107,14 +105,11 @@ mpg %>%
   scale_color_RR()
 
 ```
-
-
 :::
 
 # Scatter plot (continuous palette)
 
 ::: panel-tabset
-
 ## Red
 
 ```{r}
@@ -152,12 +147,9 @@ mtcars %>%
   scale_color_continuous_RR_blue()
 
 ```
-
-
 :::
 
 # Density plot
-
 
 ```{r}
 #| warning: false
@@ -181,10 +173,7 @@ data %>%
 
 ```
 
-
-
 # Line chart (simple)
-
 
 ```{r}
 #| warning: false
@@ -212,7 +201,6 @@ data %>%
 ```
 
 # Line chart (faceted)
-
 
 ```{r}
 #| warning: false
@@ -245,7 +233,6 @@ tmp %>%
 # Heat map
 
 ::: panel-tabset
-
 ## Blue
 
 ```{r}
@@ -284,7 +271,6 @@ data %>%
   scale_fill_continuous_RR_red()
 
 ```
-
 :::
 
 # Lollipop chart
@@ -322,24 +308,6 @@ ggplot(data) +
         panel.grid.major.y = element_blank()) +
   xlab("") +
   ylab("Value of Y")
-
-
-```
-
-# EMPTY CATEGORY
-
-```{r}
-#| warning: false
-#| out-width: 100%
-
-
-```
-
-# EMPTY CATEGORY
-
-```{r}
-#| warning: false
-#| out-width: 100%
 
 
 ```

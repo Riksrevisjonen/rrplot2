@@ -14,3 +14,10 @@ theme_RR(base_size = 12, base_family = "sans")
 \description{
 Basic theme function to implement the official graph style of the Norwegian Office of the Auditor General.
 }
+\examples{
+library(ggplot2)
+p <- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg,
+colour = factor(gear)))
+
+p + theme_RR()
+}
