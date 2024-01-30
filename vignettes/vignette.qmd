@@ -1,5 +1,5 @@
 ---
-title: "Graph testing"
+title: "Vignette: rrplot"
 format:
   html:
     fig-height: 5

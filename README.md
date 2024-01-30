@@ -38,12 +38,11 @@ Using the custom wrappers are optional, but recommended.
 This is a basic example which shows you how to create a bar chart:
 
 ``` r
-library(dplyr)
 library(ggplot2)
 library(ggthemes)
 library(rrplot)
 
-mtcars %>% 
+mtcars |> 
   ggplot(aes(x = factor(cyl),
              fill = factor(am))) +
   theme_RR() +
@@ -67,7 +66,7 @@ Another example, with a scatter plot:
 
 ``` r
 
-iris %>% 
+iris |> 
   ggplot(aes(x = Sepal.Length, 
              y = Sepal.Width, 
              color = Species)) +

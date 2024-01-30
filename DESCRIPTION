@@ -7,7 +7,7 @@ Authors@R:
     person("Joachim", "Sandnes", , "jsn@riksrevisjonen.no", role = c("aut", "cre"))
 Maintainer: Joachim Sandnes <jsn@riksrevisjonen.no>
 Imports:
-    ggplot2,
+    ggplot2 (>= 3.4.0),
     ggthemes,
     scales,
     grid
