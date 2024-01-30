@@ -17,7 +17,7 @@ You can install the development version of rrplot from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("joasand-rr/rrplot")
+devtools::install_github("Riksrevisjonen/rrplot")
 ```
 
 ## Contents
