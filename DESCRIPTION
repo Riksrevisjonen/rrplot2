@@ -1,23 +1,29 @@
 Package: rrplot
-Title: Custom 'ggplot2' Theme For the Office of the Auditor General of Norway.
+Title: Custom 'ggplot2' Theme For the Office of the Auditor General of Norway
+Version: 0.1.0
+Authors@R: c(
+    person("Joachim", "Sandnes", role = c("aut", "cre"), email = "jsn@riksrevisjonen.no"),
+    person("Aleksander", "Eilertsen", role = "ctb", email = "ale@riksrevisjonen.no"),
+    person(family = "Riksrevisjonen", role = "cph"))
 Description: Custom 'ggplot2' theme for the Office of the Auditor General of Norway,
-  inspired by the 'ggthemes' package.
-Version: 0.0.0.9000
-Authors@R: 
-    person("Joachim", "Sandnes", , "jsn@riksrevisjonen.no", role = c("aut", "cre"))
-Maintainer: Joachim Sandnes <jsn@riksrevisjonen.no>
+    inspired by the 'ggthemes' package.
 Imports:
     ggplot2 (>= 3.4.0),
     ggthemes,
     scales,
     grid
 Suggests: 
-    quarto,
-    rmarkdown
+    knitr,
+    markdown,
+    rmarkdown,
+    spelling
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-VignetteBuilder: 
-    quarto
+VignetteBuilder: knitr
 URL: https://riksrevisjonen.github.io/rrplot/
+epends:
+    R (>= 4.1)
+Language: en-GB
+    
