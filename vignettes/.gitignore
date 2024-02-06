@@ -44,3 +44,5 @@ docs/
 
 # Other files
 .DS_Store
+*.html
+*.R

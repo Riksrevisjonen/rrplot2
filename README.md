@@ -4,11 +4,13 @@
 # rrplot
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/Riksrevisjonen/rrplot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Riksrevisjonen/rrplot/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The purpose of `rrplot` is to provide auditors of the Norwegian Office
-of the Auditor General with the ability to quickly make beautiful graphs
-with `ggplot2` that are in accordance with official requirements.
+The purpose of rrplot is to provide auditors at OAG Norway with the
+ability to quickly make beautiful graphs with ggplot2 that are in
+accordance with official requirements.
 
 ## Installation
 
@@ -22,8 +24,16 @@ devtools::install_github("Riksrevisjonen/rrplot")
 
 ## Contents
 
-The package contains custom wrappers for the following geom functions in
-`ggplot2`:
+### Main theme
+
+Most of the adjustments to the graph aesthetics can be found in the
+`theme_RR()` function. This is simply added as a layer in the ggplot
+call.
+
+### Custom wrappers for specific geoms
+
+The package also contains custom wrappers for the following geom
+functions in `ggplot2`:
 
 - `geom_bar()` -\> `geom_bar_RR()`
 - `geom_point()` -\> `geom_point_RR()`
@@ -31,9 +41,45 @@ The package contains custom wrappers for the following geom functions in
 - `geom_density()` -\> `geom_density_RR()`
 - `geom_line()` -\> `geom_line_RR()`
 
-Using the custom wrappers are optional, but recommended.
+These wrappers are also added as layers in the ggplot call, along with
+`theme_RR()`. Note that `theme_RR()` needs to be placed **before** the
+geom wrapper (see example below). Using the custom wrappers are
+optional, but recommended.
 
-## Example
+### Color scales
+
+The package contains functions to determine the color palette of your
+graphs.
+
+Discrete color palette functions:
+
+- `scale_color_RR()`: Used when the **color** argument of `aes()` has
+  been assigned.
+- `scale_fill_RR()`: Used when the **fill** argument of `aes()` has been
+  assigned.
+
+These are added as separate layers in the ggplot call and contain 9
+colors:
+
+``` r
+library(scales)
+show_col(RR_pal()(9))
+```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
+Continuous color palette functions:
+
+- `scale_fill_continuous_RR_red`: Red continuous **fill** scale between
+  `#FB749D` and `#B8002A`
+- `scale_fill_continuous_RR_blue` Blue continuous **fill** scale between
+  `#4CA4E6` and `#01123B`
+- `scale_color_continuous_RR_red` Red continuous **color** scale between
+  `#FB749D` and `#B8002A`
+- `scale_color_continuous_RR_blue` Blue continuous **color** scale
+  between `#4CA4E6` and `#01123B`
+
+## Examples
 
 This is a basic example which shows you how to create a bar chart:
 
@@ -53,14 +99,11 @@ mtcars |>
   scale_fill_RR()
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
-`theme_RR()` contains the custom theme and aesthetic adjustments, while
-`geom_bar_RR()` contains adjustments to the default settings in the bar
-plot geom. `geom_bar_RR()` accepts the same arguments as `geom_bar()`.
-
-Note that `theme_RR()` needs to be placed **before** `geom_bar_RR()` as
-a layer in the ggplot call.
+Note that `geom_bar_RR()` accepts the same arguments as `geom_bar()`.
+Again, please note that `theme_RR()` needs to be placed **before** the
+`geom_bar()` layer.
 
 Another example, with a scatter plot:
 
@@ -78,4 +121,4 @@ iris |>
   scale_color_RR()
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />

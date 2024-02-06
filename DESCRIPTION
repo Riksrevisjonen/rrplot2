@@ -1,6 +1,6 @@
 Package: rrplot
 Title: Custom 'ggplot2' Theme For the Office of the Auditor General of Norway
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
     person("Joachim", "Sandnes", role = c("aut", "cre"), email = "jsn@riksrevisjonen.no"),
     person("Aleksander", "Eilertsen", role = "ctb", email = "ale@riksrevisjonen.no"),
@@ -16,7 +16,9 @@ Suggests:
     knitr,
     markdown,
     rmarkdown,
-    spelling
+    spelling,
+    babynames,
+    dplyr
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

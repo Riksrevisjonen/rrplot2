@@ -1,4 +1,11 @@
 url: https://riksrevisjonen.github.io/rrplot/
+articles:
+ - title: "Introduction"
+   navbar: ~
+   desc: >
+     More examples using rrplot.
+   contents:
+      - introduction
 template:
   bootstrap: 5
 
