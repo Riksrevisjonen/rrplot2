@@ -1,0 +1,9 @@
+pandoc: 3.1.11
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  introduction: introduction.html
+last_built: 2025-08-21T06:34Z
+urls:
+  reference: https://riksrevisjonen.github.io/rrplot/reference
+  article: https://riksrevisjonen.github.io/rrplot/articles
