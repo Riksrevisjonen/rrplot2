@@ -21,23 +21,26 @@ theme_RR <- function(base_size = 12, base_family = "sans") {
 
   ret <-
     ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
-    ggplot2::theme(line = ggplot2::element_line(color = "#183271"),
+    ggplot2::theme(line = ggplot2::element_line(color = RR_gridlines_color),
                    rect = ggplot2::element_rect(fill = main_colors, color = NA,
                                        linetype = 1),
-                   text = ggplot2::element_text(color = "#183271"),
+                   text = ggplot2::element_text(color = "black"),
 
                    # Axis lines
-                   axis.line = ggplot2::element_line(RR_dark_blue,
-                                            linewidth = ggplot2::rel(0.8)),
+                   # axis.line = ggplot2::element_line(RR_gridlines_color,
+                   #                          linewidth = ggplot2::rel(0.8)),
+                   axis.line = element_blank(),
 
                    # Axis titles
                    axis.title.y = ggplot2::element_text(margin = ggplot2::margin(r = base_size+8,
-                                                               l = base_size),
-                                               angle = 90,
-                                               size = ggplot2::rel(1.15)),
+                                                                                 l = base_size),
+                                                        face = "bold",
+                                                        angle = 90,
+                                                        size = ggplot2::rel(1.15)),
                    axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = base_size+8,
-                                                               b = base_size),
-                                               size = ggplot2::rel(1.15)),
+                                                                                 b = base_size),
+                                                        size = ggplot2::rel(1.15),
+                                                        face = "bold"),
 
                    # Axis text
                    axis.text = ggplot2::element_text(size = ggplot2::rel(1)),
@@ -55,15 +58,15 @@ theme_RR <- function(base_size = 12, base_family = "sans") {
                    axis.ticks.length = grid::unit(-0.25, "cm"),
 
                    # Legend
-                   legend.background = ggplot2::element_rect(fill = RR_light_blue,
-                                                    color = RR_light_blue,
+                   legend.background = ggplot2::element_rect(fill = RR_background_color,
+                                                    color = RR_background_color,
                                                     linetype = 0),
-                   legend.box.background = ggplot2::element_rect(fill = RR_light_blue,
-                                                        color = RR_light_blue,
+                   legend.box.background = ggplot2::element_rect(fill = RR_background_color,
+                                                                 color = RR_background_color,
                                                         linetype = 0),
                    #legend.spacing = ggplot2::margin(c(0,0,0,0), "points"),
-                   legend.key = ggplot2::element_rect(fill = RR_light_blue,
-                                             color = RR_light_blue,
+                   legend.key = ggplot2::element_rect(fill = RR_background_color,
+                                                      color = RR_background_color,
                                              linetype = 0),
                    legend.key.size = grid::unit(1.2, "lines"),
                    legend.key.height = NULL,
@@ -84,20 +87,20 @@ theme_RR <- function(base_size = 12, base_family = "sans") {
                    # Panel and plot backgrounds
                    panel.background = ggplot2::element_rect(fill = "white", linetype = 0),
                    panel.border = ggplot2::element_blank(),
-                   panel.grid.major = ggplot2::element_line(color = scales::alpha(RR_dark_blue, 0.5),
+                   panel.grid.major = ggplot2::element_line(color = RR_gridlines_color,
                                                    linewidth = ggplot2::rel(1.75),
-                                                   linetype = "dotted", size = 0.6),
+                                                   linetype = "solid", size = RR_gridlines_size),
                    panel.grid.minor = ggplot2::element_blank(),
                    panel.spacing = grid::unit(0.25, "lines"),
-                   plot.background = ggplot2::element_rect(fill = RR_light_blue,
-                                                  color = RR_light_blue),
+                   plot.background = ggplot2::element_rect(fill = RR_background_color,
+                                                  color = RR_background_color),
 
                    # Facet wrap aesthetics
                    strip.background.x = ggplot2::element_rect(color = "transparent",
                                                      fill = "transparent"),
                    strip.background.y = ggplot2::element_rect(color = "transparent",
                                                      fill = "transparent"),
-                   strip.text = ggplot2::element_text(color = RR_dark_blue,
+                   strip.text = ggplot2::element_text(color = RR_font_color,
                                              family = base_family,
                                              face = "bold",
                                              size = ggplot2::rel(1),
