@@ -83,7 +83,7 @@ scale_fill_RR <- function(...) {
 #' p + scale_fill_continuous_RR_red()
 #'
 scale_fill_continuous_RR_red <- function(...) {
-  ggplot2::scale_fill_gradient(low = "#FB749D", high = "#B8002A", ...)
+  ggplot2::scale_fill_gradient(low = "#fcb7b9", high = "#a40000", ...)
 }
 
 #' Continuous fill scale (blue)
@@ -112,7 +112,7 @@ scale_fill_continuous_RR_red <- function(...) {
 #' p + scale_fill_continuous_RR_blue()
 #'
 scale_fill_continuous_RR_blue <- function(...) {
-  ggplot2::scale_fill_gradient(low = "#4CA4E6", high = "#01123B", ...)
+  ggplot2::scale_fill_gradient(low = "#b4c6e9", high = "#001b61", ...)
 }
 
 #' Continuous color scale (red)
@@ -134,7 +134,7 @@ scale_fill_continuous_RR_blue <- function(...) {
 #' p + scale_color_continuous_RR_red()
 
 scale_color_continuous_RR_red <- function(...) {
-  ggplot2::scale_color_gradient(low = "#FB749D", high = "#B8002A", ...)
+  ggplot2::scale_color_gradient(low = "#fcb7b9", high = "#a40000", ...)
 }
 
 #' Continuous color scale (blue)
@@ -156,7 +156,7 @@ scale_color_continuous_RR_red <- function(...) {
 #' p + scale_color_continuous_RR_blue()
 
 scale_color_continuous_RR_blue <- function(...) {
-  ggplot2::scale_color_gradient(low = "#4CA4E6", high = "#01123B", ...)
+  ggplot2::scale_color_gradient(low = "#b4c6e9", high = "#001b61", ...)
 }
 
 #' Check palette size (help function)

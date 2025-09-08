@@ -4,21 +4,25 @@
 #' @name imports
 NULL
 
-RR_dark_blue <- "#183271"
-RR_scarlet_red <- "#E20046"
-RR_teal <- "#169AFD"
-RR_green <- "#A6D96A"
-RR_purple <- "#8A3FFC"
-RR_orange <- "#FF9038"
+bright_red <- "#A40000"      # Bright Red
+havelock_blue <- "#6C93E1"   # Havelock Blue
+flush_orange <- "#FF7F00"    # Flush Orange
+biscay <- "#193271"          # Biscay
+monza <- "#E20029"           # Monza
+caribbean_green <- "#00BA89" # Caribbean Green
+clairvoyant <- "#730F7A"     # Clairvoyant
+supernova <- "#FFC200"       # Supernova
+deep_sea_green <- "#0E6669"  # Deep Sea Green
+black <- "#000000"           # Black
 
-main_colors <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange)
+main_colors <- c(bright_red, havelock_blue, flush_orange,
+                 biscay, monza, caribbean_green)
 
 RR_light_blue = "#E9f8FF"
 RR_background_color = "white"
 RR_gridlines_color = "gray80"
-RR_gridlines_size = 0.4
+RR_gridlines_size = 0.2
 RR_font_color = "black"
-
 
 #' RR color palette
 #' Defines the official color palette of the Norwegian Office of the Auditor General.
@@ -29,57 +33,61 @@ RR_font_color = "black"
 #'
 #' @examples
 #' library(scales)
-#' show_col(RR_pal()(9))
+#' show_col(RR_pal()(10))
 
 RR_pal <- function(fill=TRUE) {
 
   if (fill) {
-    max_n <- 9
+    max_n <- 10
 
     f <- function(n) {
       check_pal_n_RR(n, max_n)
       if (n == 1L) {
-        i <- RR_dark_blue
+        i <- bright_red
       } else if (n == 2L) {
-        i <- c(RR_dark_blue, RR_scarlet_red)
+        i <- c(bright_red, havelock_blue)
       } else if (n == 3L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal)
+        i <- c(bright_red, havelock_blue, flush_orange)
       } else if (n == 4L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green)
+        i <- c(bright_red, havelock_blue, flush_orange, biscay)
       } else if (n == 5L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple)
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza)
       } else if (n == 6L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange)
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green)
       } else if (n == 7L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange, "pink")
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant)
       } else if (n == 8L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange, "pink", "black")
-      } else if (n >= 8L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange, "pink", "black", "darkgreen")
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova)
+      } else if (n == 9L) {
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova, deep_sea_green)
+      } else if (n >= 9L) {
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova, deep_sea_green, black)
       }
     }
   } else {
-    max_n <- 9
+    max_n <- 10
     f <- function(n) {
       check_pal_n_RR(n, max_n)
       if (n == 1L) {
-        i <- RR_dark_blue
+        i <- bright_red
       } else if (n == 2L) {
-        i <- c(RR_dark_blue, RR_scarlet_red)
+        i <- c(bright_red, havelock_blue)
       } else if (n == 3L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal)
+        i <- c(bright_red, havelock_blue, flush_orange)
       } else if (n == 4L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green)
+        i <- c(bright_red, havelock_blue, flush_orange, biscay)
       } else if (n == 5L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple)
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza)
       } else if (n == 6L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange)
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green)
       } else if (n == 7L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange, "pink")
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant)
       } else if (n == 8L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange, "pink", "black")
-      } else if (n >= 8L) {
-        i <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange, "pink", "black", "darkgreen")
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova)
+      } else if (n == 9L) {
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova, deep_sea_green)
+      } else if (n >= 9L) {
+        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova, deep_sea_green, black)
       }
     }
   }

@@ -19,7 +19,7 @@ example_1
 
 ggsave(example_1, filename = paste0(graph_path, "example_1.svg"),
        width = 16,
-       height = 12,
+       height = 10,
        units = "cm")
 
 
@@ -30,7 +30,7 @@ example_2 <- iris |>
   theme_RR() +
   geom_point_RR() +
   labs(title = "Scatterplot of Sepal Dimensions",
-       subtitle = "Text here",
+       subtitle = "This is a longer text that spans across several lines,\nproviding more information to the reader.",
        x = "Sepal Length",
        y = "Sepal Width") +
   scale_color_RR()
@@ -39,7 +39,7 @@ example_2
 
 ggsave(example_2, filename = paste0(graph_path, "example_2.svg"),
        width = 16,
-       height = 12,
+       height = 10,
        units = "cm")
 
 example_3 <- mpg |>
@@ -54,5 +54,5 @@ example_3
 
 ggsave(example_3, filename = paste0(graph_path, "example_3.svg"),
        width = 16,
-       height = 12,
+       height = 10,
        units = "cm")

@@ -32,13 +32,19 @@ theme_RR <- function(base_size = 12, base_family = "sans") {
                    axis.line = element_blank(),
 
                    # Axis titles
-                   axis.title.y = ggplot2::element_text(margin = ggplot2::margin(r = base_size,
-                                                                                 l = base_size),
+                   axis.title.y = ggplot2::element_text(margin = ggplot2::margin(t = 5,
+                                                                                 r = 15,
+                                                                                 b = 5,
+                                                                                 l = 5,
+                                                                                 unit = "pt"),
                                                         angle = 90,
-                                                        size = ggplot2::rel(1.15)),
-                   axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = base_size,
-                                                                                 b = base_size),
-                                                        size = ggplot2::rel(1.15)),
+                                                        size = ggplot2::rel(1)),
+                   axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 15,
+                                                                                 r = 5,
+                                                                                 b = 5,
+                                                                                 l = 5,
+                                                                                 unit = "pt"),
+                                                        size = ggplot2::rel(1)),
 
                    # Axis text
                    axis.text = ggplot2::element_text(size = ggplot2::rel(1)),
@@ -69,12 +75,13 @@ theme_RR <- function(base_size = 12, base_family = "sans") {
                    legend.key.size = grid::unit(1.2, "lines"),
                    legend.key.height = NULL,
                    legend.key.width = NULL,
-                   legend.text = ggplot2::element_text(size = ggplot2::rel(1.1)),
+                   legend.text = ggplot2::element_text(size = ggplot2::rel(1)),
                    legend.text.align = NULL,
-                   legend.title = ggplot2::element_text(size = ggplot2::rel(1.2),  hjust = 0,
-                                                        margin = ggplot2::margin(t = 12,
+                   legend.title = ggplot2::element_text(size = ggplot2::rel(1),  hjust = 0,
+                                                        face = "bold",
+                                                        margin = ggplot2::margin(t = 0,
                                                                                  r = 0,
-                                                                                 b = 0,
+                                                                                 b = 5,
                                                                                  l = 0,
                                                                                  unit = "pt")),
                    legend.title.align = NULL,
@@ -109,12 +116,21 @@ theme_RR <- function(base_size = 12, base_family = "sans") {
                                                       hjust = 0, face = "bold",
                                                       margin = ggplot2::margin(t = 0,
                                                                                r = 0,
-                                                                               b = 12,
+                                                                               b = 9,
                                                                                l = 0,
-                                                                               unit = "points")),
+                                                                               unit = "pt")),
+
+                   plot.subtitle = ggplot2::element_text(#size = ggplot2::rel(1.5),
+                                                         hjust = 0,
+                                                         # face = "bold",
+                                                         margin = ggplot2::margin(t = 0,
+                                                                                  r = 0,
+                                                                                  b = 12,
+                                                                                  l = 0,
+                                                                                  unit = "pt")),
 
                    # Spacing
-                   plot.margin = grid::unit(c(1, 0.6, 0.4, 0.4), "cm"),
+                   plot.margin = grid::unit(c(15, 5, 5, 5), "pt"),
                    complete = TRUE)
   ret
 }
