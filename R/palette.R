@@ -1,6 +1,8 @@
 #' import ggplot2
 #' import scales
 #' import ggthemes
+#' import sysfonts
+#' import showtext
 #' @name imports
 NULL
 
@@ -23,6 +25,11 @@ RR_background_color = "white"
 RR_gridlines_color = "gray80"
 RR_gridlines_size = 0.2
 RR_font_color = "black"
+
+sysfonts::font_add("Avenir-brodtekst", "K:/Avdelinger/F1/Visualisering/AvenirLTStd-Roman_0.otf")
+sysfonts::font_add("Avenir-tittel", "K:/Avdelinger/F1/Visualisering/AvenirLTStd-Black.otf")
+showtext::showtext_auto()
+
 
 #' RR color palette
 #' Defines the official color palette of the Norwegian Office of the Auditor General.
