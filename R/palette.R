@@ -14,10 +14,6 @@ RR_orange <- "#FF9038"
 main_colors <- c(RR_dark_blue, RR_scarlet_red, RR_teal, RR_green, RR_purple, RR_orange)
 
 RR_light_blue = "#E9f8FF"
-RR_background_color = "white"
-RR_gridlines_color = "gray80"
-RR_gridlines_size = 0.4
-RR_font_color = "black"
 
 #' RR color palette
 #' Defines the official color palette of the Norwegian Office of the Auditor General.
