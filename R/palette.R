@@ -40,15 +40,60 @@ showtext::showtext_auto()
 #' library(scales)
 #' show_col(RR_pal()(10))
 
-RR_pal <- function(fill = TRUE) {
-  max_n <- 10
-  colors <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9, color_10)
-  f <- function(n) {
-    check_pal_n_RR(n, max_n)
-    if (n >= 10L) {
-      colors
-    } else {
-      colors[seq_len(n)]
+RR_pal <- function(fill=TRUE) {
+
+  if (fill) {
+    max_n <- 10
+
+    f <- function(n) {
+      check_pal_n_RR(n, max_n)
+      if (n == 1L) {
+        i <- "#A40000"
+      } else if (n == 2L) {
+        i <- c("#00BA89", "#193271")
+      } else if (n == 3L) {
+        i <- c("#A40000", "#00BA89", "#193271")
+      } else if (n == 4L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1")
+      } else if (n == 5L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00")
+      } else if (n == 6L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029")
+      } else if (n == 7L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029", "#FFC200")
+      } else if (n == 8L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029", "#FFC200", "#730F7A")
+      } else if (n == 9L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029", "#FFC200", "#730F7A", "#0E6669")
+      } else if (n >= 9L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029", "#FFC200", "#730F7A", "#0E6669", "#000000")
+      }
+    }
+  } else {
+    max_n <- 10
+    f <- function(n) {
+      check_pal_n_RR(n, max_n)
+      if (n == 1L) {
+        i <- "#A40000"
+      } else if (n == 2L) {
+        i <- c("#00BA89", "#193271")
+      } else if (n == 3L) {
+        i <- c("#A40000", "#00BA89", "#193271")
+      } else if (n == 4L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1")
+      } else if (n == 5L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00")
+      } else if (n == 6L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029")
+      } else if (n == 7L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029", "#FFC200")
+      } else if (n == 8L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029", "#FFC200", "#730F7A")
+      } else if (n == 9L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029", "#FFC200", "#730F7A", "#0E6669")
+      } else if (n >= 9L) {
+        i <- c("#A40000", "#00BA89", "#193271", "#6C93E1", "#FF7F00", "#E20029", "#FFC200", "#730F7A", "#0E6669", "#000000")
+      }
     }
   }
   attr(f, "max_n") <- max_n
