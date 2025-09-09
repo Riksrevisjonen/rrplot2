@@ -6,21 +6,20 @@
 #' @name imports
 NULL
 
-bright_red <- "#A40000"      # Bright Red
-havelock_blue <- "#6C93E1"   # Havelock Blue
-flush_orange <- "#FF7F00"    # Flush Orange
-biscay <- "#193271"          # Biscay
-monza <- "#E20029"           # Monza
-caribbean_green <- "#00BA89" # Caribbean Green
-clairvoyant <- "#730F7A"     # Clairvoyant
-supernova <- "#FFC200"       # Supernova
-deep_sea_green <- "#0E6669"  # Deep Sea Green
-black <- "#000000"           # Black
+color_1 <- "#A40000"      # Bright Red
+color_2 <- "#FF7F00"    # Flush Orange
+color_3 <- "#193271"          # Biscay
+color_4 <- "#00BA89" # Caribbean Green
+color_5 <- "#E20029"           # Monza
+color_6 <- "#6C93E1"   # Havelock Blue
+color_7 <- "#730F7A"     # Clairvoyant
+color_8 <- "#FFC200"       # Supernova
+color_9 <- "#0E6669"  # Deep Sea Green
+color_10 <- "#000000"           # Black
 
-main_colors <- c(bright_red, havelock_blue, flush_orange,
-                 biscay, monza, caribbean_green)
+main_colors <- c(color_1, color_2, color_3,
+                 color_4, color_5, color_6)
 
-RR_light_blue = "#E9f8FF"
 RR_background_color = "white"
 RR_gridlines_color = "gray80"
 RR_gridlines_size = 0.2
@@ -28,6 +27,11 @@ RR_font_color = "black"
 
 sysfonts::font_add("Avenir-brodtekst", "K:/Avdelinger/F1/Visualisering/AvenirLTStd-Roman_0.otf")
 sysfonts::font_add("Avenir-tittel", "K:/Avdelinger/F1/Visualisering/AvenirLTStd-Black.otf")
+# sysfonts::font_add(
+#   "Avenir-brodtekst",
+#   system.file("fonts", "AvenirLTStd-Roman_0.otf", package = "rrplot2")
+# )
+# sysfonts::font_add("Avenir-tittel", system.file("fonts", "AvenirLTStd-Black.otf", package = "rrplot2"))
 showtext::showtext_auto()
 
 
@@ -50,25 +54,25 @@ RR_pal <- function(fill=TRUE) {
     f <- function(n) {
       check_pal_n_RR(n, max_n)
       if (n == 1L) {
-        i <- bright_red
+        i <- color_1
       } else if (n == 2L) {
-        i <- c(bright_red, havelock_blue)
+        i <- c(color_1, color_2)
       } else if (n == 3L) {
-        i <- c(bright_red, havelock_blue, flush_orange)
+        i <- c(color_1, color_2, color_3)
       } else if (n == 4L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay)
+        i <- c(color_1, color_2, color_3, color_4)
       } else if (n == 5L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza)
+        i <- c(color_1, color_2, color_3, color_4, color_5)
       } else if (n == 6L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6)
       } else if (n == 7L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7)
       } else if (n == 8L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8)
       } else if (n == 9L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova, deep_sea_green)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9)
       } else if (n >= 9L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova, deep_sea_green, black)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9, color_10)
       }
     }
   } else {
@@ -76,25 +80,25 @@ RR_pal <- function(fill=TRUE) {
     f <- function(n) {
       check_pal_n_RR(n, max_n)
       if (n == 1L) {
-        i <- bright_red
+        i <- color_1
       } else if (n == 2L) {
-        i <- c(bright_red, havelock_blue)
+        i <- c(color_1, color_2)
       } else if (n == 3L) {
-        i <- c(bright_red, havelock_blue, flush_orange)
+        i <- c(color_1, color_2, color_3)
       } else if (n == 4L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay)
+        i <- c(color_1, color_2, color_3, color_4)
       } else if (n == 5L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza)
+        i <- c(color_1, color_2, color_3, color_4, color_5)
       } else if (n == 6L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6)
       } else if (n == 7L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7)
       } else if (n == 8L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8)
       } else if (n == 9L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova, deep_sea_green)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9)
       } else if (n >= 9L) {
-        i <- c(bright_red, havelock_blue, flush_orange, biscay, monza, caribbean_green, clairvoyant, supernova, deep_sea_green, black)
+        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9, color_10)
       }
     }
   }
