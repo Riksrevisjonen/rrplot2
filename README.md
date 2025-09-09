@@ -86,20 +86,22 @@ This is a basic example which shows you how to create a bar chart:
 ``` r
 library(ggplot2)
 library(ggthemes)
-library(rrplot)
+# library(rrplot)
 
-mtcars |> 
+mtcars |>
   ggplot(aes(x = factor(cyl),
              fill = factor(am))) +
   theme_RR() +
   geom_bar_RR() +
-  labs(title = "Number of Cars per Number of Cylinders", 
-       x = "Number of Cylinders", 
-       y = "Count") +
+  labs(title = "This is a bar chart",
+       subtitle = "This is a more detailed description of the underlying data",
+       x = "Number of Cylinders",
+       y = "Count",
+       fill = "Category") +
   scale_fill_RR()
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/example_1.svg" width="100%" />
 
 Note that `geom_bar_RR()` accepts the same arguments as `geom_bar()`.
 Again, please note that `theme_RR()` needs to be placed **before** the
@@ -109,16 +111,18 @@ Another example, with a scatter plot:
 
 ``` r
 
-iris |> 
-  ggplot(aes(x = Sepal.Length, 
-             y = Sepal.Width, 
+iris |>
+  ggplot(aes(x = Sepal.Length,
+             y = Sepal.Width,
              color = Species)) +
   theme_RR() +
   geom_point_RR() +
-  labs(title = "Scatterplot of Sepal Dimensions", 
-       x = "Sepal Length", 
+  labs(title = "Scatterplot",
+       subtitle = "This is a longer text that spans across several lines,\nproviding more information to the reader.",
+       x = "Sepal Length",
        y = "Sepal Width") +
   scale_color_RR()
+
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/example_2.svg" width="100%" />

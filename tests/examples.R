@@ -27,9 +27,11 @@ example_1 <- mtcars |>
              fill = factor(am))) +
   theme_RR() +
   geom_bar_RR() +
-  labs(title = "Number of Cars per Number of Cylinders",
+  labs(title = "This is a bar chart",
+       subtitle = "This is a more detailed description of the underlying data",
        x = "Number of Cylinders",
-       y = "Count") +
+       y = "Count",
+       fill = "Category") +
   scale_fill_RR()
 
 save_function(example_1, filename = "example_1")
@@ -40,7 +42,7 @@ example_2 <- iris |>
              color = Species)) +
   theme_RR() +
   geom_point_RR() +
-  labs(title = "Scatterplot of Sepal Dimensions",
+  labs(title = "Scatterplot",
        subtitle = "This is a longer text that spans across several lines,\nproviding more information to the reader.",
        x = "Sepal Length",
        y = "Sepal Width") +

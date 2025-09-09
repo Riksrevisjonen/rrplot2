@@ -16,5 +16,5 @@ Defines the official color palette of the Norwegian Office of the Auditor Genera
 }
 \examples{
 library(scales)
-show_col(RR_pal()(9))
+show_col(RR_pal()(10))
 }

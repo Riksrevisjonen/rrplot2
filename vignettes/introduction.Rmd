@@ -35,7 +35,7 @@ This vignette provides examples on how to use different plotting functions.
 library(dplyr)
 library(ggplot2)
 library(babynames)
-library(rrplot)
+library(rrplot2)
 ```
 
 # Bar chart
@@ -165,7 +165,7 @@ data |>
 tmp <- data |>
   mutate(name2=name)
 
-RR_dark_blue <- "#183271"
+RR_dark_blue <- "#193271"
 
 tmp |>
   ggplot(aes(x = year, 

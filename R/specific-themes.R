@@ -106,7 +106,8 @@ geom_jitter_RR <- function(..., size = 2.5, width = 0.4, height = 0.4){
                                                                  linetype = "solid"),
                       panel.grid.major.y = ggplot2::element_line(color = RR_gridlines_color,
                                                                  linewidth = RR_gridlines_size,
-                                                                 linetype = "solid")))
+                                                                 linetype = "solid")),
+       ggplot2::scale_y_continuous(breaks = breaks_extended(6)))
 }
 
 #' Custom wrapper for geom_density

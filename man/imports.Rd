@@ -5,22 +5,32 @@
 \alias{imports}
 \title{import ggplot2
 import scales
-import ggthemes}
+import ggthemes
+import sysfonts
+import showtext}
 \description{
 import ggplot2
 import scales
 import ggthemes
+import sysfonts
+import showtext
 
 import ggplot2
 import scales
 import ggthemes
+import sysfonts
+import showtext
 
 import ggplot2
 import scales
 import ggthemes
+import sysfonts
+import showtext
 
 import ggplot2
 import scales
 import ggthemes
 import grid
+import sysfonts
+import showtext
 }

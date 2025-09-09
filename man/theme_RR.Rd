@@ -4,7 +4,7 @@
 \alias{theme_RR}
 \title{Basic theme function to implement the official graph style of the Norwegian Office of the Auditor General.}
 \usage{
-theme_RR(base_size = 12, base_family = "sans")
+theme_RR(base_size = 12, base_family = "sans", use_avenir = TRUE)
 }
 \arguments{
 \item{base_size}{base font size, given in pts.}
