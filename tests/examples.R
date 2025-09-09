@@ -68,7 +68,7 @@ example_4 <- mtcars |>
   geom_point_RR() +
   labs(x = "Horse power",
        y = "Miles per gallon",
-       fill = "Cylinders") +
+       color = "Cylinders") +
   scale_color_continuous_RR_red()
 
 save_function(example_4, filename = "example_4")
@@ -163,3 +163,4 @@ example_8 <- data |>
 
 
 save_function(example_8, filename = "example_8")
+

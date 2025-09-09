@@ -29,7 +29,6 @@ sysfonts::font_add("Avenir-brodtekst", "K:/Riksrevisjonen/Visualisering/AvenirLT
 sysfonts::font_add("Avenir-tittel", "K:/Riksrevisjonen/Visualisering/AvenirLTStd-Black.otf")
 showtext::showtext_auto()
 
-
 #' RR color palette
 #' Defines the official color palette of the Norwegian Office of the Auditor General.
 #'
@@ -41,60 +40,15 @@ showtext::showtext_auto()
 #' library(scales)
 #' show_col(RR_pal()(10))
 
-RR_pal <- function(fill=TRUE) {
-
-  if (fill) {
-    max_n <- 10
-
-    f <- function(n) {
-      check_pal_n_RR(n, max_n)
-      if (n == 1L) {
-        i <- color_1
-      } else if (n == 2L) {
-        i <- c(color_1, color_2)
-      } else if (n == 3L) {
-        i <- c(color_1, color_2, color_3)
-      } else if (n == 4L) {
-        i <- c(color_1, color_2, color_3, color_4)
-      } else if (n == 5L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5)
-      } else if (n == 6L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6)
-      } else if (n == 7L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7)
-      } else if (n == 8L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8)
-      } else if (n == 9L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9)
-      } else if (n >= 9L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9, color_10)
-      }
-    }
-  } else {
-    max_n <- 10
-    f <- function(n) {
-      check_pal_n_RR(n, max_n)
-      if (n == 1L) {
-        i <- color_1
-      } else if (n == 2L) {
-        i <- c(color_1, color_2)
-      } else if (n == 3L) {
-        i <- c(color_1, color_2, color_3)
-      } else if (n == 4L) {
-        i <- c(color_1, color_2, color_3, color_4)
-      } else if (n == 5L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5)
-      } else if (n == 6L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6)
-      } else if (n == 7L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7)
-      } else if (n == 8L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8)
-      } else if (n == 9L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9)
-      } else if (n >= 9L) {
-        i <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9, color_10)
-      }
+RR_pal <- function(fill = TRUE) {
+  max_n <- 10
+  colors <- c(color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9, color_10)
+  f <- function(n) {
+    check_pal_n_RR(n, max_n)
+    if (n >= 10L) {
+      colors
+    } else {
+      colors[seq_len(n)]
     }
   }
   attr(f, "max_n") <- max_n
