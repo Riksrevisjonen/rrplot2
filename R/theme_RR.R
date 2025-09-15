@@ -84,9 +84,7 @@ theme_RR <- function(base_size = 12, base_family = "sans", use_avenir = TRUE) {
       panel.spacing = grid::unit(1, "lines"),
 
       plot.background = ggplot2::element_rect(fill = RR_background_color, color = RR_background_color),
-
-      strip.background.x = ggplot2::element_rect(color = "transparent", fill = "transparent"),
-      strip.background.y = ggplot2::element_rect(color = "transparent", fill = "transparent"),
+      strip.background = ggplot2::element_rect(color = "transparent", fill = "transparent"),
       strip.text = ggplot2::element_text(
         color = RR_font_color, family = text_family, face = "bold",
         size = ggplot2::rel(1), margin = grid::unit(c(0.5,0,0.35,0), "lines")
