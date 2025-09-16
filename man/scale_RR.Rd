@@ -3,6 +3,10 @@
 \name{scale_color_RR}
 \alias{scale_color_RR}
 \alias{scale_fill_RR}
+\alias{scale_color_traffic_blue_RR}
+\alias{scale_fill_traffic_blue_RR}
+\alias{scale_color_traffic_green_RR}
+\alias{scale_fill_traffic_green_RR}
 \alias{scale_fill_continuous_RR_red}
 \alias{scale_fill_continuous_RR_blue}
 \alias{scale_color_continuous_RR_red}
@@ -12,6 +16,14 @@
 scale_color_RR(...)
 
 scale_fill_RR(...)
+
+scale_color_traffic_blue_RR(...)
+
+scale_fill_traffic_blue_RR(...)
+
+scale_color_traffic_green_RR(...)
+
+scale_fill_traffic_green_RR(...)
 
 scale_fill_continuous_RR_red(...)
 
@@ -106,6 +118,14 @@ Color scale function
 
 Fill scale function
 
+Color scale function (traffic - blue)
+
+Fill scale function
+
+Color scale function (traffic - green)
+
+Fill scale function
+
 Continuous fill scale (red)
 
 Continuous fill scale (blue)
@@ -142,6 +162,62 @@ labs(x = "Value", y = "Density",
 fill = "Group")
 
 p + scale_fill_RR()
+
+library(ggplot2)
+p <- ggplot(iris, aes(x = Sepal.Length,
+y = Sepal.Width,
+color = Species)) +
+theme_RR() +
+geom_point_RR() +
+labs(title = "Scatterplot of Sepal Dimensions",
+x = "Sepal Length",
+y = "Sepal Width")
+
+p + scale_color_traffic_blue_RR()
+
+# Generate example data
+library(ggplot2)
+set.seed(123)
+data <- data.frame(
+Group = rep(c("Group1", "Group2"), each = 200),
+Value = c(rnorm(200, mean = 0, sd = 1), rnorm(200, mean = 2, sd = 1)))
+
+p <- data |>
+ggplot(aes(x = Value, fill = Group)) +
+theme_RR() +
+geom_density_RR(alpha = 0.5) +
+labs(x = "Value", y = "Density",
+fill = "Group")
+
+p + scale_fill_traffic_blue_RR()
+
+library(ggplot2)
+p <- ggplot(iris, aes(x = Sepal.Length,
+y = Sepal.Width,
+color = Species)) +
+theme_RR() +
+geom_point_RR() +
+labs(title = "Scatterplot of Sepal Dimensions",
+x = "Sepal Length",
+y = "Sepal Width")
+
+p + scale_color_traffic_green_RR()
+
+# Generate example data
+library(ggplot2)
+set.seed(123)
+data <- data.frame(
+Group = rep(c("Group1", "Group2"), each = 200),
+Value = c(rnorm(200, mean = 0, sd = 1), rnorm(200, mean = 2, sd = 1)))
+
+p <- data |>
+ggplot(aes(x = Value, fill = Group)) +
+theme_RR() +
+geom_density_RR(alpha = 0.5) +
+labs(x = "Value", y = "Density",
+fill = "Group")
+
+p + scale_fill_traffic_green_RR()
 
 library(ggplot2)
 # Generate example data

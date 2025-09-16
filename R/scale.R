@@ -59,6 +59,111 @@ scale_fill_RR <- function(...) {
   ggplot2::discrete_scale("fill", "RR", RR_pal(), ...)
 }
 
+#' Color scale function (traffic - blue)
+#'
+#' @inheritParams ggplot2::discrete_scale
+#' @inheritParams RR_trafikk_pal_blue
+#' @family color RR
+#' @rdname scale_RR
+#'
+#' @export
+#' @examples
+#' library(ggplot2)
+#' p <- ggplot(iris, aes(x = Sepal.Length,
+#' y = Sepal.Width,
+#' color = Species)) +
+#' theme_RR() +
+#' geom_point_RR() +
+#' labs(title = "Scatterplot of Sepal Dimensions",
+#' x = "Sepal Length",
+#' y = "Sepal Width")
+#'
+#' p + scale_color_traffic_blue_RR()
+#'
+scale_color_traffic_blue_RR <- function(...) {
+  ggplot2::discrete_scale("color", "RR", RR_trafikk_pal_blue(), ...)
+}
+
+#' Fill scale function
+#'
+#' @inheritParams ggplot2::discrete_scale
+#'
+#' @rdname scale_RR
+#'
+#' @export
+#' @examples
+#' # Generate example data
+#' library(ggplot2)
+#' set.seed(123)
+#' data <- data.frame(
+#' Group = rep(c("Group1", "Group2"), each = 200),
+#' Value = c(rnorm(200, mean = 0, sd = 1), rnorm(200, mean = 2, sd = 1)))
+#'
+#' p <- data |>
+#' ggplot(aes(x = Value, fill = Group)) +
+#' theme_RR() +
+#' geom_density_RR(alpha = 0.5) +
+#' labs(x = "Value", y = "Density",
+#' fill = "Group")
+#'
+#' p + scale_fill_traffic_blue_RR()
+#'
+scale_fill_traffic_blue_RR <- function(...) {
+  ggplot2::discrete_scale("fill", "RR", RR_trafikk_pal_blue(), ...)
+}
+#' Color scale function (traffic - green)
+#'
+#' @inheritParams ggplot2::discrete_scale
+#' @inheritParams RR_trafikk_pal_green
+#' @family color RR
+#' @rdname scale_RR
+#'
+#' @export
+#' @examples
+#' library(ggplot2)
+#' p <- ggplot(iris, aes(x = Sepal.Length,
+#' y = Sepal.Width,
+#' color = Species)) +
+#' theme_RR() +
+#' geom_point_RR() +
+#' labs(title = "Scatterplot of Sepal Dimensions",
+#' x = "Sepal Length",
+#' y = "Sepal Width")
+#'
+#' p + scale_color_traffic_green_RR()
+#'
+scale_color_traffic_green_RR <- function(...) {
+  ggplot2::discrete_scale("color", "RR", RR_trafikk_pal_green(), ...)
+}
+
+#' Fill scale function
+#'
+#' @inheritParams ggplot2::discrete_scale
+#'
+#' @rdname scale_RR
+#'
+#' @export
+#' @examples
+#' # Generate example data
+#' library(ggplot2)
+#' set.seed(123)
+#' data <- data.frame(
+#' Group = rep(c("Group1", "Group2"), each = 200),
+#' Value = c(rnorm(200, mean = 0, sd = 1), rnorm(200, mean = 2, sd = 1)))
+#'
+#' p <- data |>
+#' ggplot(aes(x = Value, fill = Group)) +
+#' theme_RR() +
+#' geom_density_RR(alpha = 0.5) +
+#' labs(x = "Value", y = "Density",
+#' fill = "Group")
+#'
+#' p + scale_fill_traffic_green_RR()
+#'
+scale_fill_traffic_green_RR <- function(...) {
+  ggplot2::discrete_scale("fill", "RR", RR_trafikk_pal_green(), ...)
+}
+
 #' Continuous fill scale (red)
 #'
 #' @rdname scale_RR

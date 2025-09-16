@@ -100,3 +100,106 @@ RR_pal <- function(fill=TRUE) {
   f
 }
 
+
+#' RR traffic color palette (green)
+#' Defines the official traffic color palette of the Norwegian Office of the Auditor General.
+#'
+#' @param fill Determines if the palette is used in a fill or color scale function.
+#'
+#' @export
+#'
+#' @examples
+#' library(scales)
+#' show_col(RR_trafikk_pal_green()(5))
+
+RR_trafikk_pal_green <- function(fill=TRUE) {
+
+  if (fill) {
+    max_n <- 5
+
+    f <- function(n) {
+      check_pal_n_RR(n, max_n)
+      if (n == 1L) {
+        i <- "#A40000"
+      } else if (n == 2L) {
+        i <- c("#A40000", "#178c49")
+      } else if (n == 3L) {
+        i <- c("#a40000", "#ffc200", "#178c49")
+      } else if (n == 4L) {
+        i <- c("#A40000", "#ff7f00", "#00ba89", "#178c49")
+      } else if (n == 5L) {
+        i <- c("#A40000", "#ff7f00", "#ffc200", "#00ba89", "#178c49")
+      }
+    }
+  } else {
+    max_n <- 10
+    f <- function(n) {
+      check_pal_n_RR(n, max_n)
+      if (n == 1L) {
+        i <- "#A40000"
+      } else if (n == 2L) {
+        i <- c("#A40000", "#178c49")
+      } else if (n == 3L) {
+        i <- c("#a40000", "#ffc200", "#178c49")
+      } else if (n == 4L) {
+        i <- c("#A40000", "#ff7f00", "#00ba89", "#178c49")
+      } else if (n == 5L) {
+        i <- c("#A40000", "#ff7f00", "#ffc200", "#00ba89", "#178c49")
+      }
+    }
+  }
+  attr(f, "max_n") <- max_n
+  f
+}
+
+#' RR traffic color palette (blue)
+#' Defines the official traffic color palette of the Norwegian Office of the Auditor General.
+#'
+#' @param fill Determines if the palette is used in a fill or color scale function.
+#'
+#' @export
+#'
+#' @examples
+#' library(scales)
+#' show_col(RR_trafikk_pal_blue()(5))
+
+RR_trafikk_pal_blue <- function(fill=TRUE) {
+
+  if (fill) {
+    max_n <- 5
+
+    f <- function(n) {
+      check_pal_n_RR(n, max_n)
+      if (n == 1L) {
+        i <- "#A40000"
+      } else if (n == 2L) {
+        i <- c("#A40000", "#81a0f9")
+      } else if (n == 3L) {
+        i <- c("#a40000", "#ffc200", "#193271")
+      } else if (n == 4L) {
+        i <- c("#A40000", "#ff7f00", "#81a0f9", "#193271")
+      } else if (n == 5L) {
+        i <- c("#A40000", "#ff7f00", "#ffc200", "#81a0f9", "#193271")
+      }
+    }
+  } else {
+    max_n <- 10
+    f <- function(n) {
+      check_pal_n_RR(n, max_n)
+      if (n == 1L) {
+        i <- "#A40000"
+      } else if (n == 2L) {
+        i <- c("#A40000", "#81a0f9")
+      } else if (n == 3L) {
+        i <- c("#a40000", "#ffc200", "#193271")
+      } else if (n == 4L) {
+        i <- c("#A40000", "#ff7f00", "#81a0f9", "#193271")
+      } else if (n == 5L) {
+        i <- c("#A40000", "#ff7f00", "#ffc200", "#81a0f9", "#193271")
+      }
+    }
+  }
+  attr(f, "max_n") <- max_n
+  f
+}
+
