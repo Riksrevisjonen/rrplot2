@@ -138,7 +138,8 @@ example_7 <- tmp |>
             linewidth = 1.2)+
   scale_color_RR() +
   facet_wrap(~name) +
-  theme(axis.line = element_blank()) +
+  theme(axis.line = element_blank(),
+        panel.background = element_rect(fill = "#f9f9f9")) +
   labs(y = "Count",
        x = "Year")
 
@@ -163,4 +164,43 @@ example_8 <- data |>
 
 
 save_function(example_8, filename = "example_8")
+
+data <- data.frame(
+  Question = rep(c("Spørsmål 1", "Spørsmål 2", "Spørsmål 3"), each = 5),
+  Response = rep(c("Svært uenig", "Uenig", "Hverken eller", "Enig", "Svært enig"), times = 3),
+  Count = c(5, 10, 20, 30, 35, 3, 8, 15, 25, 49, 2, 7, 18, 28, 45)
+)
+
+# Ensure Response is ordered
+data$Response <- factor(data$Response,
+                        levels = c("Svært uenig", "Uenig", "Hverken eller", "Enig", "Svært enig"))
+
+# Plot
+example_9 <- data |>
+  ggplot(aes(x = Question, y = Count, fill = Response)) +
+  geom_bar_RR(stat = "identity") +
+  coord_flip() +
+  labs(title = "Svar på spørsmål",
+       subtitle = "Basert på en spørreundersøkelse som går til 100 tilfeldige personer.",
+       fill = "Kategori",
+       x = "Spørsmål", y = "Prosent") +
+  theme_RR() +
+  scale_fill_traffic_blue_RR()
+
+save_function(example_9, filename = "example_9")
+
+# Plot
+example_10 <- data |>
+  ggplot(aes(x = Question, y = Count, fill = Response)) +
+  geom_bar_RR(stat = "identity") +
+  coord_flip() +
+  labs(title = "Svar på spørsmål",
+       subtitle = "Basert på en spørreundersøkelse som går til 100 tilfeldige personer.",
+       fill = "Kategori",
+       x = "Spørsmål", y = "Prosent") +
+  theme_RR() +
+  scale_fill_traffic_green_RR()
+
+save_function(example_10, filename = "example_10")
+
 
