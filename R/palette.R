@@ -23,7 +23,7 @@ main_colors <- c(color_1, color_2, color_3,
 RR_background_color = "white"
 RR_gridlines_color = "gray80"
 RR_gridlines_size = 0.2
-RR_font_color = "black"
+RR_font_color = "#424242"
 
 sysfonts::font_add("Avenir-brodtekst", "K:/Riksrevisjonen/Visualisering/AvenirLTStd-Roman_0.otf")
 sysfonts::font_add("Avenir-tittel", "K:/Riksrevisjonen/Visualisering/AvenirLTStd-Black.otf")

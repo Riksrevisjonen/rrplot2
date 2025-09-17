@@ -30,7 +30,7 @@ theme_RR <- function(base_size = 12, base_family = "sans", use_avenir = TRUE) {
     ggplot2::theme(
       line = ggplot2::element_line(color = RR_gridlines_color),
       rect = ggplot2::element_rect(fill = main_colors, color = NA, linetype = 1),
-      text = ggplot2::element_text(color = "black", family = text_family),
+      text = ggplot2::element_text(color = RR_font_color, family = text_family),
 
       axis.line = element_blank(),
 
