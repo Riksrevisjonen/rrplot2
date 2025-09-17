@@ -76,7 +76,7 @@ theme_RR <- function(base_size = 12, base_family = "sans", use_avenir = TRUE) {
       legend.direction = NULL,
       legend.justification = "center",
 
-      panel.background = ggplot2::element_rect(fill = "white", linetype = 0),
+      panel.background = ggplot2::element_rect(fill = "#f9f9f9", linetype = 0),
       panel.border = ggplot2::element_blank(),
       panel.grid.major = ggplot2::element_line(color = RR_gridlines_color, linewidth = ggplot2::rel(1.75), linetype = "solid", size = RR_gridlines_size),
       panel.grid.minor = ggplot2::element_blank(),
