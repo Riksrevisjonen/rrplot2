@@ -50,6 +50,77 @@ RR_pal <- function(fill=TRUE) {
       if (n == 1L) {
         i <- "#A40000"
       } else if (n == 2L) {
+        i <- c("#A40000", "#6C93E1")
+      } else if (n == 3L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00")
+      } else if (n == 4L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271")
+      } else if (n == 5L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029")
+      } else if (n == 6L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89")
+      } else if (n == 7L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89", "#730F7A")
+      } else if (n == 8L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89", "#730F7A", "#FFC200")
+      } else if (n == 9L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89", "#730F7A", "#FFC200", "#0E6669")
+      } else if (n >= 9L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89", "#730F7A", "#FFC200", "#0E6669", "#000000")
+      }
+    }
+  } else {
+    max_n <- 10
+    f <- function(n) {
+      check_pal_n_RR(n, max_n)
+      if (n == 1L) {
+        i <- "#A40000"
+      } else if (n == 2L) {
+        i <- c("#A40000", "#6C93E1")
+      } else if (n == 3L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00")
+      } else if (n == 4L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271")
+      } else if (n == 5L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029")
+      } else if (n == 6L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89")
+      } else if (n == 7L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89", "#730F7A")
+      } else if (n == 8L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89", "#730F7A", "#FFC200")
+      } else if (n == 9L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89", "#730F7A", "#FFC200", "#0E6669")
+      } else if (n >= 9L) {
+        i <- c("#A40000", "#6C93E1", "#FF7F00", "#193271", "#E20029", "#00BA89", "#730F7A", "#FFC200", "#0E6669", "#000000")
+      }
+    }
+  }
+  attr(f, "max_n") <- max_n
+  f
+}
+
+#' RR color palette (alternative)
+#' Defines an alternative order of the official color palette of the Norwegian Office of the Auditor General.
+#'
+#' @param fill Determines if the palette is used in a fill or color scale function.
+#'
+#' @export
+#'
+#' @examples
+#' library(scales)
+#' show_col(RR_pal_alternative()(10))
+
+RR_pal_alternative <- function(fill=TRUE) {
+
+  if (fill) {
+    max_n <- 10
+
+    f <- function(n) {
+      check_pal_n_RR(n, max_n)
+      if (n == 1L) {
+        i <- "#A40000"
+      } else if (n == 2L) {
         i <- c("#00BA89", "#193271")
       } else if (n == 3L) {
         i <- c("#A40000", "#00BA89", "#193271")
