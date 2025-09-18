@@ -25,7 +25,7 @@ NULL
 #'
 geom_bar_RR <- function(..., width = 0.6){
   list(ggplot2::geom_bar(..., width = width),
-       ggplot2::scale_y_continuous(breaks = breaks_extended(6)))
+       ggplot2::scale_y_continuous(breaks = scales::breaks_extended(6)))
 }
 
 #' Custom wrapper for flipped version of geom_bar
@@ -80,7 +80,7 @@ geom_point_RR <- function(..., size = 2.5){
                       panel.grid.major.y = ggplot2::element_line(color = RR_gridlines_color,
                                                                  linewidth = RR_gridlines_size,
                                                                  linetype = "solid")),
-       ggplot2::scale_y_continuous(breaks = breaks_extended(6)))
+       ggplot2::scale_y_continuous(breaks = scales::breaks_extended(6)))
 }
 
 #' Custom wrapper for geom_jitter
@@ -107,7 +107,7 @@ geom_jitter_RR <- function(..., size = 2.5, width = 0.4, height = 0.4){
                       panel.grid.major.y = ggplot2::element_line(color = RR_gridlines_color,
                                                                  linewidth = RR_gridlines_size,
                                                                  linetype = "solid")),
-       ggplot2::scale_y_continuous(breaks = breaks_extended(6)))
+       ggplot2::scale_y_continuous(breaks = scales::breaks_extended(6)))
 }
 
 #' Custom wrapper for geom_density
@@ -134,7 +134,7 @@ geom_jitter_RR <- function(..., size = 2.5, width = 0.4, height = 0.4){
 #'   scale_fill_RR()
 geom_density_RR <- function(..., alpha = 0.5){
   list(ggplot2::geom_density(alpha = alpha),
-       ggplot2::scale_y_continuous(breaks = breaks_extended(6)))
+       ggplot2::scale_y_continuous(breaks = scales::breaks_extended(6)))
 }
 
 #' Custom wrapper for geom_line
@@ -146,7 +146,7 @@ geom_density_RR <- function(..., alpha = 0.5){
 #'
 geom_line_RR <- function(..., linewidth = 1.5){
   list(ggplot2::geom_line(linewidth = linewidth),
-       ggplot2::scale_y_continuous(breaks = breaks_extended(6)))
+       ggplot2::scale_y_continuous(breaks = scales::breaks_extended(6)))
 }
 
 

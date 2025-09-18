@@ -25,8 +25,8 @@ RR_gridlines_color = "gray80"
 RR_gridlines_size = 0.2
 RR_font_color = "#424242"
 
-sysfonts::font_add("Avenir-brodtekst", "K:/Riksrevisjonen/Visualisering/AvenirLTStd-Roman_0.otf")
-sysfonts::font_add("Avenir-tittel", "K:/Riksrevisjonen/Visualisering/AvenirLTStd-Black.otf")
+sysfonts::font_add("Avenir-brodtekst", system.file("fonts/AvenirLTStd-Roman_0.otf", package = "rrplot2"))
+sysfonts::font_add("Avenir-tittel", system.file("fonts/AvenirLTStd-Black.otf", package = "rrplot2"))
 showtext::showtext_auto()
 
 #' RR color palette
