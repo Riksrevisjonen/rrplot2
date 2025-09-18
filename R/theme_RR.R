@@ -68,7 +68,7 @@ theme_RR <- function(base_size = 12, base_family = "sans", use_avenir = TRUE) {
       legend.text.align = NULL,
       legend.title = ggplot2::element_text(
         size = ggplot2::rel(1), hjust = 0, face = "bold",
-        margin = ggplot2::margin(t = 0, r = 0, b = 5, l = 0, unit = "pt"),
+        margin = ggplot2::margin(t = 0, r = 5, b = 5, l = 0, unit = "pt"),
         family = title_family
       ),
       legend.title.align = NULL,
@@ -101,7 +101,7 @@ theme_RR <- function(base_size = 12, base_family = "sans", use_avenir = TRUE) {
         family = text_family
       ),
 
-      plot.margin = grid::unit(c(15, 5, 5, 5), "pt"),
+      plot.margin = margin(t = 0.3, r = 0.1, b = 0.3, l = 0.1, unit ="cm"),
       complete = TRUE
     )
   ret

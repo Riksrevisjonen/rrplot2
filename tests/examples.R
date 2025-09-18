@@ -199,7 +199,8 @@ example_10 <- data |>
        fill = "Kategori",
        x = "Spørsmål", y = "Prosent") +
   theme_RR() +
-  scale_fill_traffic_green_RR()
+  scale_fill_traffic_green_RR() +
+  theme(legend.position = "bottom")
 
 save_function(example_10, filename = "example_10")
 
