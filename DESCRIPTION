@@ -13,7 +13,8 @@ Imports:
     ggthemes,
     scales,
     showtext,
-    grid
+    grid,
+    sysfonts
 Suggests: 
     knitr,
     markdown,
