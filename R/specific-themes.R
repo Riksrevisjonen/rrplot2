@@ -1,8 +1,8 @@
-#' import ggplot2
-#' import scales
-#' import ggthemes
-#' import sysfonts
-#' import showtext
+#' @import ggplot2
+#' @import scales
+#' @import ggthemes
+#' @import sysfonts
+#' @import showtext
 #' @name imports
 NULL
 

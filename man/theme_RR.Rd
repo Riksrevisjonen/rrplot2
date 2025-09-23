@@ -10,6 +10,8 @@ theme_RR(base_size = 12, base_family = "sans", use_avenir = TRUE)
 \item{base_size}{base font size, given in pts.}
 
 \item{base_family}{base font family}
+
+\item{use_avenir}{Bool. If \code{TRUE} use the Avenir font face. Defaults to \code{TRUE}}
 }
 \description{
 Basic theme function to implement the official graph style of the Norwegian Office of the Auditor General.

@@ -1,15 +1,16 @@
-#' import ggplot2
-#' import scales
-#' import ggthemes
-#' import grid
-#' import sysfonts
-#' import showtext
+#' @import ggplot2
+#' @import scales
+#' @import ggthemes
+#' @import grid
+#' @import sysfonts
+#' @import showtext
 #' @name imports
 NULL
 
 #' Basic theme function to implement the official graph style of the Norwegian Office of the Auditor General.
 #'
 #' @inheritParams ggplot2::theme_grey
+#' @param use_avenir Bool. If `TRUE` use the Avenir font face. Defaults to `TRUE`
 #'
 #' @export
 #' @examples
