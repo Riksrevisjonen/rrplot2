@@ -56,14 +56,14 @@
 </h1></div>
 <!-- badges: start -->
 
+<!-- badges: end -->
 <p>The purpose of rrplot is to provide auditors at OAG Norway with the ability to quickly make beautiful graphs with ggplot2 that are in accordance with official requirements.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of rrplot from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install the development version of rrplot from the local repository with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Riksrevisjonen/rrplot"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rrplot2"</span>, repos <span class="op">=</span> <span class="st">"https://cran.riksrevisjonen.no/latest"</span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="contents">Contents<a class="anchor" aria-label="anchor" href="#contents"></a>
@@ -115,16 +115,16 @@
 <p>Continuous color palette functions:</p>
 <ul>
 <li>
-<code>scale_fill_continuous_RR_red</code>: Red continuous <strong>fill</strong> scale between <code>#FB749D</code> and <code>#B8002A</code>
+<code>scale_fill_continuous_RR_red</code>: Red continuous <strong>fill</strong> scale between <code>#fcb7b9</code> and <code>#a40000</code>
 </li>
 <li>
-<code>scale_fill_continuous_RR_blue</code> Blue continuous <strong>fill</strong> scale between <code>#4CA4E6</code> and <code>#01123B</code>
+<code>scale_fill_continuous_RR_blue</code> Blue continuous <strong>fill</strong> scale between <code>#b4c6e9</code> and <code>#001b61</code>
 </li>
 <li>
-<code>scale_color_continuous_RR_red</code> Red continuous <strong>color</strong> scale between <code>#FB749D</code> and <code>#B8002A</code>
+<code>scale_color_continuous_RR_red</code> Red continuous <strong>color</strong> scale between <code>#fcb7b9</code> and <code>#a40000</code>
 </li>
 <li>
-<code>scale_color_continuous_RR_blue</code> Blue continuous <strong>color</strong> scale between <code>#4CA4E6</code> and <code>#01123B</code>
+<code>scale_color_continuous_RR_blue</code> Blue continuous <strong>color</strong> scale between <code>#b4c6e9</code> and <code>#001b61</code>
 </li>
 </ul>
 </div>
@@ -135,21 +135,30 @@
 <p>This is a basic example which shows you how to create a bar chart:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jrnold.github.io/ggthemes/" class="external-link">ggthemes</a></span><span class="op">)</span></span>
-<span><span class="co"># library(rrplot)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://riksrevisjonen.github.io/rrplot2/">rrplot2</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Attaching system fonts</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'rrplot2'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:rrplot':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     check_pal_n_RR, geom_bar_flipped_RR, geom_bar_RR, geom_density_RR,</span></span>
+<span><span class="co">#&gt;     geom_jitter_RR, geom_line_RR, geom_point_RR, RR_pal,</span></span>
+<span><span class="co">#&gt;     scale_color_continuous_RR_blue, scale_color_continuous_RR_red,</span></span>
+<span><span class="co">#&gt;     scale_color_RR, scale_fill_continuous_RR_blue,</span></span>
+<span><span class="co">#&gt;     scale_fill_continuous_RR_red, scale_fill_RR, theme_RR</span></span>
 <span></span>
 <span><span class="va">mtcars</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span>,</span>
 <span>             fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/theme_RR.html">theme_RR</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/geom_bar_RR.html">geom_bar_RR</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"This is a bar chart"</span>,</span>
-<span>       subtitle <span class="op">=</span> <span class="st">"This is a more detailed description of the underlying data"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"Number of Cylinders"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"Count"</span>,</span>
-<span>       fill <span class="op">=</span> <span class="st">"Category"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Dette er et søylediagram"</span>,</span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Fordelt på undergrupper"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Gruppe"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Antall"</span>,</span>
+<span>       fill <span class="op">=</span> <span class="st">"Kategori"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/scale_RR.html">scale_fill_RR</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/example_1.svg" width="100%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
 <p>Note that <code><a href="reference/geom_bar_RR.html">geom_bar_RR()</a></code> accepts the same arguments as <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar()</a></code>. Again, please note that <code><a href="reference/theme_RR.html">theme_RR()</a></code> needs to be placed <strong>before</strong> the <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar()</a></code> layer.</p>
 <p>Another example, with a scatter plot:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -161,11 +170,11 @@
 <span>  <span class="fu"><a href="reference/theme_RR.html">theme_RR</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/geom_point_RR.html">geom_point_RR</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Scatterplot"</span>,</span>
-<span>       subtitle <span class="op">=</span> <span class="st">"This is a longer text that spans across several lines,\nproviding more information to the reader."</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"Sepal Length"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"Sepal Width"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Dette er en lenger beskrivelse over flere linjer\nsom gir leseren mer informasjon."</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"X-variabel"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Y-variabel"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/scale_RR.html">scale_color_RR</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/example_2.svg" width="100%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
