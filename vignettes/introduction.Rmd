@@ -2,7 +2,6 @@
 title: "Introduction"
 format:
   html:
-    fig-height: 5
     out-width: 100%
     code-fold: true
     code-summary: "Show source code"
@@ -29,169 +28,168 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{css, echo=FALSE}
+img {
+    border: white;
+}
+```
+
 This vignette provides examples on how to use different plotting functions.
 
 ```{r, eval=TRUE, message=FALSE}
-library(dplyr)
 library(ggplot2)
-library(babynames)
 library(rrplot2)
 ```
 
 # Bar chart
 
-```{r setup, out.width='100%'}
-mtcars |> 
+```{r, out.width='100%', fig.width=7, fig.height=5}
+mtcars |>
   ggplot(aes(x = factor(cyl),
              fill = factor(am))) +
   theme_RR() +
   geom_bar_RR() +
-  labs(title = "Number of Cars per Number of Cylinders", 
-       x = "Number of Cylinders", 
-       y = "Count") +
+  labs(title = "Dette er et søylediagram",
+       subtitle = "Fordelt på undergrupper",
+       x = "Gruppe",
+       y = "Antall",
+       fill = "Kategori") +
   scale_fill_RR()
 ```
 
 # Scatter plot (discrete palette)
 
-## Example 1
+## One plot
 
-```{r, out.width='100%'}
-iris |> 
-  ggplot(aes(x = Sepal.Length, 
-             y = Sepal.Width, 
+```{r, out.width='100%', fig.width=7, fig.height=5}
+iris |>
+  ggplot(aes(x = Sepal.Length,
+             y = Sepal.Width,
              color = Species)) +
   theme_RR() +
   geom_point_RR() +
-  labs(title = "Scatterplot of Sepal Dimensions", 
-       x = "Sepal Length", 
-       y = "Sepal Width") +
+  labs(title = "Scatterplot",
+       subtitle = "Dette er en lenger beskrivelse over flere linjer\nsom gir leseren mer informasjon.",
+       x = "X-variabel",
+       y = "Y-variabel") +
   scale_color_RR()
 
 ```
 
-## Example 2
+## Small multiples
 
-```{r, out.width='100%'}
-mpg |> 
-  ggplot(aes(cty, 
-             hwy, 
-             color = factor(cyl))) +
+```{r, out.width='100%', fig.width=7, fig.height=5}
+iris |> 
+  ggplot(aes(x = Sepal.Length,
+             y = Sepal.Width)) +
+  geom_point(aes(color = Species)) +
+  facet_wrap(~ Species,
+             nrow = 2) +
   theme_RR() +
-  geom_jitter_RR() +
-  scale_color_RR()
+  scale_color_RR() +
+  labs(x = "X-variabel",
+       y = "Y-variabel",
+       color = "Gruppe",
+       title = "Oppdelt plot",
+       subtitle = "Med flere underkategorier") 
 ```
+
 
 # Scatter plot (continuous palette)
 
 ## Red
 
-```{r, out.width='100%'}
-mtcars |> 
-  ggplot(aes(x = hp, 
+```{r, out.width='100%', fig.width=7, fig.height=5}
+mtcars |>
+  ggplot(aes(x = hp,
              y = mpg,
              color = cyl)) +
-  theme_RR() + 
+  theme_RR() +
   geom_point_RR() +
-  labs(x = "Horse power", 
-       y = "Miles per gallon",
-       fill = "Cylinders") +
+  labs(x = "X-variabel",
+       y = "Y-variabel",
+       color = "Farge") +
   scale_color_continuous_RR_red()
 
 ```
 
 ## Blue
 
-```{r, out.width='100%'}
-mtcars |> 
-  ggplot(aes(x = hp, 
+```{r, out.width='100%', fig.width=7, fig.height=5}
+mtcars |>
+  ggplot(aes(x = hp,
              y = mpg,
              color = cyl)) +
-  theme_RR() + 
+  theme_RR() +
   geom_point_RR() +
-  labs(x = "Horse power", 
-       y = "Miles per gallon",
-       fill = "Cylinders") +
+  labs(x = "X-variabel",
+       y = "Y-variabel",
+       color = "Farge") +
   scale_color_continuous_RR_blue()
-
 ```
 
 # Density plot
 
-```{r, out.width='100%'}
+```{r, out.width='100%', fig.width=7, fig.height=5}
 # Generate example data
 set.seed(123)
 data <- data.frame(
   Group = rep(c("Group1", "Group2"), each = 200),
-  Value = c(rnorm(200, mean = 0, sd = 1), rnorm(200, mean = 2, sd = 1))
-)
+  Value = c(rnorm(200, mean = 0, sd = 1), rnorm(200, mean = 2, sd = 1)))
 
 # Create density plot
-data |> 
+data |>
   ggplot(aes(x = Value, fill = Group)) +
   theme_RR() +
   geom_density_RR(alpha = 0.5) +
   labs(x = "Value", y = "Density",
-       fill = "Group") +
+       fill = "Group",
+       title = "Density plot",
+       subtitle = "Med to undergrupper") +
   scale_fill_RR()
-
 ```
 
 # Line chart (simple)
 
-```{r warning=FALSE, out.width='100%'}
-# Load dataset
-data("babynames")
-data <- babynames |> 
-  filter(name %in% c("Mary", "Ashley", "Amanda",
-                     "Jessica", "Patricia", "Linda", 
-                     "Deborah", "Dorothy", "Betty")) |>
-  filter(sex=="F")
+## One plot
 
-# Plot
-data |>
-  ggplot(aes(x = year, 
-             y = n, 
-             group = name, 
-             color = name)) +
-  theme_RR() +  
-  geom_line_RR() +
+```{r, out.width='100%', fig.width=7, fig.height=5}
+data("economics_long")
+economics_long |> 
+  ggplot(aes(x = date, y = value, color = variable)) +
+  geom_line_RR(linewidth = 0.8) +
+  labs(title = "Linjediagram med utvikling over tid",
+       subtitle = "For en rekke økonomiske indikatorer",
+       x = "År",
+       y = "Verdi",
+       color = "Indikator") +
+  theme_RR() +
   scale_color_RR()
 ```
 
-# Line chart (faceted)
+## Small multiples
 
-```{r, fig.height=8, out.width='100%'}
-tmp <- data |>
-  mutate(name2=name)
-
-RR_dark_blue <- "#193271"
-
-tmp |>
-  ggplot(aes(x = year, 
-             y = n)) +
+```{r, out.width='100%', fig.width=7, fig.height=8}
+economics_long |> 
+  ggplot(aes(x = date, y = value, color = variable)) +
+  geom_line_RR(linewidth = 0.8) +
+  labs(title = "Linjediagram med utvikling over tid",
+       subtitle = "For en rekke økonomiske indikatorer",
+       x = "År",
+       y = "Verdi",
+       color = "Indikator") +
   theme_RR() +
-  geom_line(data = tmp |> dplyr::select(-name), 
-               aes(group = name2),
-               color = "grey", 
-               linewidth = 0.5, 
-               alpha = 0.5) +
-  geom_line(aes(color = name), 
-               color = RR_dark_blue, 
-               linewidth = 1.2)+
   scale_color_RR() +
-  facet_wrap(~name) +
-  theme(axis.line = element_blank()) +
-  labs(y = "Count",
-       x = "Year")
-
+  facet_wrap(~variable, scales = "free",
+             nrow = 3) +
+  scale_y_continuous(limits = c(0, NA))
 ```
 
 # Heat map
 
 ## Blue
 
-```{r, out.width='100%'}
+```{r, out.width='100%', fig.width=7, fig.height=5}
 # Dummy data
 x <- LETTERS[1:20]
 y <- paste0("var", seq(1,20))
@@ -210,7 +208,7 @@ data |>
 
 ## Red
 
-```{r, out.width='100%'}
+```{r, out.width='100%', fig.width=7, fig.height=5}
 data |> 
   ggplot(aes(X, 
              Y, 
@@ -219,3 +217,44 @@ data |>
   theme_RR() +
   scale_fill_continuous_RR_red()
 ```
+
+# Survey data
+
+## Blue likert color scale
+
+```{r, out.width='100%', fig.width=7, fig.height=5}
+data <- data.frame(
+  Question = rep(c("Spørsmål 1", "Spørsmål 2", "Spørsmål 3"), each = 5),
+  Response = rep(c("Svært uenig", "Uenig", "Hverken eller", "Enig", "Svært enig"), times = 3),
+  Count = c(5, 10, 20, 30, 35, 3, 8, 15, 25, 49, 2, 7, 18, 28, 45)
+)
+
+data$Response <- factor(data$Response,
+                        levels = c("Svært uenig", "Uenig", "Hverken eller", "Enig", "Svært enig"))
+
+ data |>
+  ggplot(aes(x = Question, y = Count, fill = Response)) +
+  geom_bar_RR(stat = "identity") +
+  coord_flip() +
+  labs(title = "Svar på spørsmål",
+       subtitle = "Basert på en spørreundersøkelse som går til 100 tilfeldige personer.",
+       fill = "Kategori",
+       x = "Spørsmål", y = "Prosent") +
+  theme_RR() +
+  scale_fill_traffic_blue_RR()
+```
+
+## Green likert color scale
+```{r, out.width='100%', fig.width=7, fig.height=5}
+data |>
+  ggplot(aes(x = Question, y = Count, fill = Response)) +
+  geom_bar_RR(stat = "identity") +
+  coord_flip() +
+  labs(title = "Svar på spørsmål",
+       subtitle = "Basert på en spørreundersøkelse som går til 100 tilfeldige personer.",
+       fill = "Kategori",
+       x = "Spørsmål", y = "Prosent") +
+  theme_RR() +
+  scale_fill_traffic_green_RR() 
+```
+

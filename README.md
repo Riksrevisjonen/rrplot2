@@ -6,6 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/Riksrevisjonen/rrplot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Riksrevisjonen/rrplot/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
 The purpose of rrplot is to provide auditors at OAG Norway with the
@@ -14,12 +15,11 @@ accordance with official requirements.
 
 ## Installation
 
-You can install the development version of rrplot from
-[GitHub](https://github.com/) with:
+You can install the development version of rrplot from the local
+repository with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("Riksrevisjonen/rrplot")
+install.packages("rrplot2", repos = "https://cran.riksrevisjonen.no/latest") 
 ```
 
 ## Contents
@@ -71,13 +71,13 @@ show_col(RR_pal()(9))
 Continuous color palette functions:
 
 - `scale_fill_continuous_RR_red`: Red continuous **fill** scale between
-  `#FB749D` and `#B8002A`
+  `#fcb7b9` and `#a40000`
 - `scale_fill_continuous_RR_blue` Blue continuous **fill** scale between
-  `#4CA4E6` and `#01123B`
+  `#b4c6e9` and `#001b61`
 - `scale_color_continuous_RR_red` Red continuous **color** scale between
-  `#FB749D` and `#B8002A`
+  `#fcb7b9` and `#a40000`
 - `scale_color_continuous_RR_blue` Blue continuous **color** scale
-  between `#4CA4E6` and `#01123B`
+  between `#b4c6e9` and `#001b61`
 
 ## Examples
 
@@ -85,23 +85,32 @@ This is a basic example which shows you how to create a bar chart:
 
 ``` r
 library(ggplot2)
-library(ggthemes)
-# library(rrplot)
+library(rrplot2)
+#> Attaching system fonts
+#> 
+#> Attaching package: 'rrplot2'
+#> The following objects are masked from 'package:rrplot':
+#> 
+#>     check_pal_n_RR, geom_bar_flipped_RR, geom_bar_RR, geom_density_RR,
+#>     geom_jitter_RR, geom_line_RR, geom_point_RR, RR_pal,
+#>     scale_color_continuous_RR_blue, scale_color_continuous_RR_red,
+#>     scale_color_RR, scale_fill_continuous_RR_blue,
+#>     scale_fill_continuous_RR_red, scale_fill_RR, theme_RR
 
 mtcars |>
   ggplot(aes(x = factor(cyl),
              fill = factor(am))) +
   theme_RR() +
   geom_bar_RR() +
-  labs(title = "This is a bar chart",
-       subtitle = "This is a more detailed description of the underlying data",
-       x = "Number of Cylinders",
-       y = "Count",
-       fill = "Category") +
+  labs(title = "Dette er et søylediagram",
+       subtitle = "Fordelt på undergrupper",
+       x = "Gruppe",
+       y = "Antall",
+       fill = "Kategori") +
   scale_fill_RR()
 ```
 
-<img src="man/figures/example_1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 Note that `geom_bar_RR()` accepts the same arguments as `geom_bar()`.
 Again, please note that `theme_RR()` needs to be placed **before** the
@@ -118,11 +127,10 @@ iris |>
   theme_RR() +
   geom_point_RR() +
   labs(title = "Scatterplot",
-       subtitle = "This is a longer text that spans across several lines,\nproviding more information to the reader.",
-       x = "Sepal Length",
-       y = "Sepal Width") +
+       subtitle = "Dette er en lenger beskrivelse over flere linjer\nsom gir leseren mer informasjon.",
+       x = "X-variabel",
+       y = "Y-variabel") +
   scale_color_RR()
-
 ```
 
-<img src="man/figures/example_2.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
