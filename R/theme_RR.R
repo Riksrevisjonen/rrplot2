@@ -88,7 +88,9 @@ theme_RR <- function(base_size = 12, base_family = "sans", use_avenir = TRUE) {
       strip.background = ggplot2::element_rect(color = "transparent", fill = "transparent"),
       strip.text = ggplot2::element_text(
         color = RR_font_color, family = text_family, face = "bold",
-        size = ggplot2::rel(1), margin = grid::unit(c(0.5,0,0.35,0), "lines")
+        size = ggplot2::rel(1),
+        # margin = grid::unit(c(0.5,0,0.35,0), "lines")
+        margin = ggplot2::margin(t = 0.5, r = 0, b = 0.35, l = 0, unit = "lines")
       ),
 
       plot.title = ggplot2::element_text(

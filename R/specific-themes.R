@@ -46,8 +46,8 @@ geom_bar_RR <- function(..., width = 0.6){
 geom_bar_flipped_RR <- function(){
   list(geom_bar_RR(),
        ggplot2::theme(panel.grid.major.x = ggplot2::element_line(RR_gridlines_color,
-                                                                 linewidth = ggplot2::rel(1.75),
-                                                                 linetype = "dotted", size = 0.6),
+                                                                 linewidth = RR_gridlines_size,
+                                                                 linetype = "dotted"),
                       panel.grid.major.y = ggplot2::element_blank(),
                       legend.position = "bottom"),
        ggplot2::coord_flip())

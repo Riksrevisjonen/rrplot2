@@ -43,7 +43,7 @@ library(rrplot2)
 
 # Bar chart
 
-```{r, dev = "svg", out.width='100%', fig.width=7, fig.height=5}
+```{r, out.width='100%'}
 mtcars |>
   ggplot(aes(x = factor(cyl),
              fill = factor(am))) +
@@ -61,7 +61,7 @@ mtcars |>
 
 ## One plot
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 iris |>
   ggplot(aes(x = Sepal.Length,
              y = Sepal.Width,
@@ -69,7 +69,7 @@ iris |>
   theme_RR() +
   geom_point_RR() +
   labs(title = "Scatterplot",
-       subtitle = "Dette er en lenger beskrivelse over flere linjer\nsom gir leseren mer informasjon.",
+       subtitle = "Dette er en beskrivelse som gir leseren mer informasjon.",
        x = "X-variabel",
        y = "Y-variabel") +
   scale_color_RR()
@@ -78,7 +78,7 @@ iris |>
 
 ## Small multiples
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 iris |> 
   ggplot(aes(x = Sepal.Length,
              y = Sepal.Width)) +
@@ -91,7 +91,8 @@ iris |>
        y = "Y-variabel",
        color = "Gruppe",
        title = "Oppdelt plot",
-       subtitle = "Med flere underkategorier") 
+       subtitle = "Med flere underkategorier")  +
+  theme(panel.background = ggplot2::element_rect(fill = "#f9f9f9", linetype = 0))
 ```
 
 
@@ -99,7 +100,7 @@ iris |>
 
 ## Red
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 mtcars |>
   ggplot(aes(x = hp,
              y = mpg,
@@ -115,7 +116,7 @@ mtcars |>
 
 ## Blue
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 mtcars |>
   ggplot(aes(x = hp,
              y = mpg,
@@ -130,7 +131,7 @@ mtcars |>
 
 # Density plot
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 # Generate example data
 set.seed(123)
 data <- data.frame(
@@ -153,7 +154,7 @@ data |>
 
 ## One plot
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 data("economics_long")
 economics_long |> 
   ggplot(aes(x = date, y = value, color = variable)) +
@@ -169,7 +170,7 @@ economics_long |>
 
 ## Small multiples
 
-```{r, out.width='100%', fig.width=7, fig.height=8}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=8}
 economics_long |> 
   ggplot(aes(x = date, y = value, color = variable)) +
   geom_line_RR(linewidth = 0.8) +
@@ -182,14 +183,15 @@ economics_long |>
   scale_color_RR() +
   facet_wrap(~variable, scales = "free",
              nrow = 3) +
-  scale_y_continuous(limits = c(0, NA))
+  scale_y_continuous(limits = c(0, NA))  +
+  theme(panel.background = ggplot2::element_rect(fill = "#f9f9f9", linetype = 0))
 ```
 
 # Heat map
 
 ## Blue
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 # Dummy data
 x <- LETTERS[1:20]
 y <- paste0("var", seq(1,20))
@@ -208,7 +210,7 @@ data |>
 
 ## Red
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 data |> 
   ggplot(aes(X, 
              Y, 
@@ -222,7 +224,7 @@ data |>
 
 ## Blue likert color scale
 
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 data <- data.frame(
   Question = rep(c("Spørsmål 1", "Spørsmål 2", "Spørsmål 3"), each = 5),
   Response = rep(c("Svært uenig", "Uenig", "Hverken eller", "Enig", "Svært enig"), times = 3),
@@ -245,7 +247,7 @@ data$Response <- factor(data$Response,
 ```
 
 ## Green likert color scale
-```{r, out.width='100%', fig.width=7, fig.height=5}
+```{r, dev = "png", out.width='100%', fig.width=5, fig.height=3.5}
 data |>
   ggplot(aes(x = Question, y = Count, fill = Response)) +
   geom_bar_RR(stat = "identity") +
